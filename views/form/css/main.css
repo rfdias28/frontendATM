@@ -1,0 +1,28 @@
+.container {
+margin-top: 50px;
+
+
+}
+#formulario{
+  border: 1px solid #17acc0;
+  border-radius: 5px;
+  padding: 100px;
+  background: #50a3a2;
+  background: -webkit-linear-gradient(top left, #07504f 0%, #53e3a6 100%);
+  background: -moz-linear-gradient(top left, #07504f 0%, #53e3a6 100%);
+  background: -o-linear-gradient(top left, #07504f 0%, #53e3a6 100%);
+  background: linear-gradient(to bottom right, #07504f 0%, #53e3a6 100%);
+}
+  
+/* .display-none{
+  display: none
+} 
+.fill{
+  display: block
+  width 100%
+} 
+textarea{
+  resize: vertical
+}
+   */
+   
