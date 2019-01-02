@@ -8,7 +8,6 @@ var contas = [{ "numero": 1, "saldo": 1000 },
 
 $(document).ready(function () {
 
-
   for (let i = 0; i < contas.length; i++) {
     const element = contas[i];
     $('#accordionExample').append(getRow(element.numero, element.saldo));
@@ -35,10 +34,10 @@ $(document).ready(function () {
   
         <div class="row">
           <div class="col">
-            <input id="input${numeroConta}" type="number" class="form-control" placeholder="Quantia a levantar">
+            <input id="input${numeroConta}" type="number" class="form-control" placeholder="Quantia a depositar">
               </div>
             <div class="col">
-              <button class="btn btn-danger"disabled>Levantar</button>
+              <button class="btn btn-success">Depositar</button>
             </div>
           </div>
         </div>
@@ -66,10 +65,10 @@ else{
 
     <div class="row">
       <div class="col">
-        <input id="input${numeroConta}" type="number" class="form-control" placeholder="Quantia a levantar">
+        <input id="input${numeroConta}" type="number" class="form-control" placeholder="Quantia a depositar">
           </div>
         <div class="col">
-          <button class="btn btn-success">Levantar</button>
+          <button class="btn btn-success">Depositar</button>
         </div>
       </div>
     </div>

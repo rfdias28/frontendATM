@@ -35,10 +35,11 @@ $(document).ready(function () {
   
         <div class="row">
           <div class="col">
-            <input id="input${numeroConta}" type="number" class="form-control" placeholder="Quantia a levantar">
+            <input id="input${numeroConta}" type="number" class="form-control"disabled placeholder="Saldo nāo disponível para transferência">
               </div>
             <div class="col">
-              <button class="btn btn-danger"disabled>Levantar</button>
+              <button class="btn btn-danger"disabled>Transferência interna</button>
+              <button class="btn btn-danger"disabled>Transferência externa</button>
             </div>
           </div>
         </div>
@@ -66,10 +67,11 @@ else{
 
     <div class="row">
       <div class="col">
-        <input id="input${numeroConta}" type="number" class="form-control" placeholder="Quantia a levantar">
+        <input id="input${numeroConta}" type="number" class="form-control" placeholder="Quantia a transferir">
           </div>
         <div class="col">
-          <button class="btn btn-success">Levantar</button>
+          <button class="btn btn-success">Transferência interna</button>
+          <button class="btn btn-success">Transferência externa</button>
         </div>
       </div>
     </div>
