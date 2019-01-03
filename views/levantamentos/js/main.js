@@ -12,9 +12,10 @@ $(document).ready(function () {
   for (let i = 0; i < contas.length; i++) {
     const element = contas[i];
     $('#accordionExample').append(getRow(element.numero, element.saldo));
+  
   }
 
-
+  $('#accordionExample').append('<br><button id="btn-sairdeposito" onclick="" type="button" class="btn btn-outline-info">Voltar</button>');
 
   function getRow(numeroConta, saldo) {
     if(saldo<0){
@@ -77,6 +78,11 @@ else{
 </div>
 </div>`;}
   }
+
+
+  // function sair(){
+  //   return menuincial
+  // }
 });
 
 
