@@ -24,13 +24,15 @@
 // getMethod();
 function executeScriptMenu(mail) {
     $('#sair').click(function () {
-        console.log("sair")
- $('#main-container').html(getLogInPage());
+        console.log("sair");
+        $('#main-container').html(getLogInPage());
         executeScriptLogin();
+        
     });
-
-    $(".wrapper").prepend("<h1>ola "+mail+"</h1>");
+    $('#levantamentos').click(function () {
+        console.log("levantamentos");
+        $('#main-container').html(getLevantamentosPage());
+        executeScriptLogin();
+    // $(".wrapper").prepend("<h1>ola "+mail+"</h1>");
 }
-
-
-
+    )}

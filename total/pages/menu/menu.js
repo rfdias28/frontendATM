@@ -42,7 +42,7 @@ function getMenuPage() {
     </ul>
       <div class="row align-middle">
         <div class="text-center col-sm-6">
-          <div class="menu animated fadeInLeft shadow-left" onclick="">
+          <div id="levantamentos" class="menu animated fadeInLeft shadow-left" onclick="">
             <button class="btn btn-outline-primary button"><strong>1</strong></button>
             <h3>
               Levantamentos
