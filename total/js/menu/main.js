@@ -27,12 +27,17 @@ function executeScriptMenu(mail) {
         console.log("sair");
         $('#main-container').html(getLogInPage());
         executeScriptLogin();
-        
+
     });
     $('#levantamentos').click(function () {
         console.log("levantamentos");
         $('#main-container').html(getLevantamentosPage());
         executeScriptLogin();
-    // $(".wrapper").prepend("<h1>ola "+mail+"</h1>");
+        // $(".wrapper").prepend("<h1>ola "+mail+"</h1>");
+    })
+    $('#depositos').click(function () {
+        console.log("depositos");
+        $('#main-container').html(getdepositosPage());
+        executeScriptLogin();
+    })
 }
-    )}
