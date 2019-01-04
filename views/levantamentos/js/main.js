@@ -15,7 +15,7 @@ $(document).ready(function () {
   
   }
 
-  $('#accordionExample').append('<br><button id="btn-sairdeposito" onclick="" type="button" class="btn btn-outline-info">Voltar</button>');
+  $('#accordionExample').append('<br><button id="btn-sairlevantamento" onclick="" type="button" class="btn btn-outline-info">Voltar</button>');
 
   function getRow(numeroConta, saldo) {
     if(saldo<0){
@@ -36,7 +36,7 @@ $(document).ready(function () {
   
         <div class="row">
           <div class="col">
-            <input id="input${numeroConta}" type="number" class="form-control" placeholder="Quantia a levantar">
+            <input id="input${numeroConta}" type="number" disabled class="form-control" placeholder="Saldo nāo disponível para levantamento">
               </div>
             <div class="col">
               <button class="btn btn-danger"disabled>Levantar</button>
