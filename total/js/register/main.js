@@ -1,6 +1,8 @@
 
 
 
+function executeScriptRegister() {
+  
 
 
   $("#voltar-button").click(function(event){
@@ -24,7 +26,7 @@ function noNEED(id) {
   var idx="#"+ toString(id)
   $(idx).replaceWith("<p>No need for this</p>")
 }
-
+}
 // // ------------------
 // $(document).ready(function () {
 

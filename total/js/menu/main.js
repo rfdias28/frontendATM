@@ -27,12 +27,38 @@ function executeScriptMenu(mail) {
         console.log("sair");
         $('#main-container').html(getLogInPage());
         executeScriptLogin();
-        
+
     });
     $('#levantamentos').click(function () {
         console.log("levantamentos");
         $('#main-container').html(getLevantamentosPage());
-        executeScriptLogin();
-    // $(".wrapper").prepend("<h1>ola "+mail+"</h1>");
+        executeScriptLevantamentos();
+        // $(".wrapper").prepend("<h1>ola "+mail+"</h1>");
+    });
+
+    $('#consultas').click(function () {
+        console.log("consultas");
+        $('#main-container').html(getConsultasPage());
+        executeScriptConsultas();
+        // $(".wrapper").prepend("<h1>ola "+mail+"</h1>");
+    });
+    $('#transferencias').click(function () {
+        console.log("transferencias");
+        $('#main-container').html(getTransferenciasPage());
+        executeScriptTransferencias();
+        // $(".wrapper").prepend("<h1>ola "+mail+"</h1>");
+    });
+    $('#pin').click(function () {
+        console.log("pin");
+        $('#main-container').html(getPinPage());
+        executeScriptPin();
+        // $(".wrapper").prepend("<h1>ola "+mail+"</h1>");
+    });
+
+    $('#depositos').click(function () {
+        console.log("depositos");
+        $('#main-container').html(getDepositosPage());
+        executeScriptDepositos();
+        // $(".wrapper").prepend("<h1>ola "+mail+"</h1>");
+    });
 }
-    )}

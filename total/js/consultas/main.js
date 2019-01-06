@@ -1,7 +1,6 @@
-executeScriptLevantamentos()
 
-
-function executeScriptLevantamentos() {
+executeScriptConsultas();
+function executeScriptConsultas() {
 
   var contas = [{ "numero": 1, "saldo": 1000 },
   { "numero": 2, "saldo": 100 },
@@ -13,16 +12,16 @@ function executeScriptLevantamentos() {
 
   $(document).ready(function () {
 
-  
-
     for (let i = 0; i < contas.length; i++) {
       const element = contas[i];
       $('#accordionExample').append(getRow(element.numero, element.saldo));
-
     }
 
     $('#accordionExample').append('<br><button id="sair"  type="button" class="btn btn-outline-info">Voltar</button>');
-
+    $("#sair").click(function () {
+      $('#main-container').html(getMenuPage());
+      executeScriptMenu();
+    });
     function getRow(numeroConta, saldo) {
       if (saldo < 0) {
         return `        
@@ -33,6 +32,7 @@ function executeScriptLevantamentos() {
         <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#collapse${numeroConta}" aria-expanded="false" aria-controls="collapse${numeroConta}">
           Conta ${numeroConta} | (${saldo}) €
         </button>
+        
       </h2>
     </div>
   
@@ -42,10 +42,10 @@ function executeScriptLevantamentos() {
   
         <div class="row">
           <div class="col">
-            <input id="input${numeroConta}" type="number" disabled class="form-control" placeholder="Saldo nāo disponível para levantamento">
+            <input id="input${numeroConta}" type="number" class="form-control" disabled placeholder="Saldo nāo disponível para depósito">
               </div>
             <div class="col">
-              <button class="btn btn-danger"disabled>Levantar</button>
+              <button class="btn btn-success">Depositar</button>
             </div>
           </div>
         </div>
@@ -73,10 +73,10 @@ function executeScriptLevantamentos() {
 
     <div class="row">
       <div class="col">
-        <input id="input${numeroConta}" type="number" class="form-control" placeholder="Quantia a levantar">
+        <input id="input${numeroConta}" type="number" class="form-control" placeholder="Quantia a depositar">
           </div>
         <div class="col">
-          <button class="btn btn-success">Levantar</button>
+          <button class="btn btn-success">Depositar</button>
         </div>
       </div>
     </div>
@@ -85,17 +85,10 @@ function executeScriptLevantamentos() {
 </div>`;
       }
     }
-
-    $("#sair").click(function () {
-      $('#main-container').html(getMenuPage());
-      executeScriptMenu();
-    });
-    // function sair(){
-    //   return menuincial
-    // }
   });
 
 
 
-
 }
+
+

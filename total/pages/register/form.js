@@ -1,6 +1,6 @@
 function getFormPage() {
     //  $('link[title="mystyle"]').attr('href', 'css/register/main.css');
-    $('script[title="myscript"]').attr('href', 'C:/Users/filip/Desktop/ATM_interface/pages/cleinte/total/js/register/main.js');
+    $('script[title="myscript"]').attr('href', 'js/register/main.js');
 
     return ` 
  <div class="container center wrapper bg-bubbles ">

@@ -1,8 +1,8 @@
 function getLevantamentosPage() {
-    $('link[title="myscript"]').attr('href', 'frontendATM/total/js/levantamentos/main.js');
-    $('link[title="mystyle"]').attr('href', 'css/login/main.css');
+    $('link[title="myscript"]').attr('href', 'js/levantamentos/main.js');
+    $('link[title="mystyle"]').attr('href', 'css/paginas/main.css');
 
-  return `<div class="wrapper">
+  return `<div >
   <div class="container">
     <h2>Levantamentos</h2>
     <div id="accordionExample" class="container accordion">

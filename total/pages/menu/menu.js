@@ -48,22 +48,22 @@ function getMenuPage() {
               Levantamentos
             </h3>
           </div>
-          <div class="menu animated fadeInLeft shadow-left" onclick="">
+          <div  id="transferencias" class="menu animated fadeInLeft shadow-left" onclick="">
             <button class="btn btn-outline-primary button"><strong>3</strong></button>
             <h3> Transferências</h3>
           </div>
-          <div class="menu animated fadeInLeft shadow-left" onclick="">
+          <div  id="pin" class="menu animated fadeInLeft shadow-left" onclick="">
             <button class="btn btn-outline-primary button"><strong>5</strong></button></strong>
-            <h3>Alterar Pin</h3>
+            <h3>Alterar Password</h3>
           </div>
 
         </div>
         <div class="text-center col-sm-6 ">
-          <div class="menu1 animated fadeInRight shadow-right" onclick="">
+          <div id="depositos" class="menu1 animated fadeInRight shadow-right" onclick="">
             <button class="btn btn-outline-primary button1"><strong>2</strong></button>
             <h3><strong> </strong>Depósitos</h3>
           </div>
-          <div class="menu1 animated fadeInRight shadow-right" onclick="">
+          <div id="consultas" class="menu1 animated fadeInRight shadow-right" >
             <strong> <button class="btn btn-outline-primary button1"><strong>4</strong></button></strong>
             <h3>Consultas</h3>
           </div>
