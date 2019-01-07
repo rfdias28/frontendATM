@@ -2,7 +2,15 @@ function getMenuPage() {
     $('link[title="mystyle"]').attr('href', 'css/menu/main.css');
     $('script[title="myscript"]').attr('href', 'js/menu/main.js');
 
-    return ` <div class="wrapper">
+    return `<div>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+    </div>
+
+  </div>
+     <div class="wrapper">
     <div class="container">
     <ul class="bg-bubbles ">
       <li>£</li>
@@ -41,35 +49,35 @@ function getMenuPage() {
      
     </ul>
       <div class="row align-middle">
-        <div class="text-center col-6">
-          <div id="levantamentos" class="menu animated row fadeInLeft shadow-left" onclick="">
-           <div class="col-sm-3 col-0"> <button class="btn btn-outline-primary button"><strong>1</strong></button></div>
-            <div class="col-sm-9 col-12"><h3>
+        <div class="text-center col-sm-6">
+          <div id="levantamentos" class="menu animated fadeInLeft shadow-left" onclick="">
+            <button class="btn btn-outline-primary button"><strong>1</strong></button>
+            <h3>
               Levantamentos
-            </h3></div>
+            </h3>
           </div>
-          <div  id="transferencias" class="menu animated row fadeInLeft shadow-left" onclick="">
-           <div class="col-sm-3 col-0"> <button class="btn btn-outline-primary button"><strong>3</strong></button></div>
-            <div class="col-sm-9 col-12"><h3> Transferências</h3></div>
+          <div  id="transferencias" class="menu animated fadeInLeft shadow-left" onclick="">
+            <button class="btn btn-outline-primary button"><strong>3</strong></button>
+            <h3> Transferências</h3>
           </div>
-          <div  id="pin" class="menu animated row fadeInLeft shadow-left" onclick="">
-           <div class="col-sm-3 col-0"> <button class="btn btn-outline-primary button"><strong>5</strong></button></div></strong>
-            <div class="col-sm-9 col-12"><h3>Alterar Password</h3></div>
+          <div  id="pin" class="menu animated fadeInLeft shadow-left" onclick="">
+            <button class="btn btn-outline-primary button"><strong>5</strong></button></strong>
+            <h3>Alterar Password</h3>
           </div>
 
         </div>
-        <div class="text-center col-6 ">
-          <div id="depositos" class="menu1 animated row fadeInRight shadow-right" onclick="">
-           <div class="col-sm-3 col-0"> <button class="btn btn-outline-primary button1"><strong>2</strong></button></div>
-            <div class="col-sm-9 col-12"><h3><strong> </strong>Depósitos</h3></div>
+        <div class="text-center col-sm-6 ">
+          <div id="depositos" class="menu1 animated fadeInRight shadow-right" onclick="">
+            <button class="btn btn-outline-primary button1"><strong>2</strong></button>
+            <h3><strong> </strong>Depósitos</h3>
           </div>
-          <div id="consultas" class="menu1 animated row fadeInRight shadow-right" >
-            <strong><div class="col-sm-3 col-0"> <button class="btn btn-outline-primary button1"><strong>4</strong></button></div></strong>
-            <div class="col-sm-9 col-12"><h3>Consultas</h3></div>
+          <div id="consultas" class="menu1 animated fadeInRight shadow-right" >
+            <strong> <button class="btn btn-outline-primary button1"><strong>4</strong></button></strong>
+            <h3>Consultas</h3>
           </div>
-          <div id="sair" class="menu1 animated row fadeInRight shadow-right">
-            <strong><div class="col-sm-3 col-0"> <button  class="btn btn-outline-primary button1"><strong>6</strong></button></div></strong>
-            <div class="col-sm-9 col-12"><h3>Sair</h3></div>
+          <div id="sair" class="menu1 animated fadeInRight shadow-right">
+            <strong> <button  class="btn btn-outline-primary button1"><strong>6</strong></button></strong>
+            <h3>Sair</h3>
            
           </div>
 

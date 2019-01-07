@@ -75,6 +75,7 @@ function arranque(){
         success: function (response) {
             console.log(response);
             console.log('sucesso');
+            fazCliente(response);
          
            
         },
@@ -88,4 +89,15 @@ function arranque(){
             'Content-Type': 'application/json'
         },
     });
+
+
+    function fazCliente(response) {
+        for (let index = 0; index < response.length; index++) {
+            
+            
+        }
+    }
+
+
+
 }
