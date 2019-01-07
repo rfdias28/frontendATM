@@ -15,7 +15,7 @@ padding-top: 25vh;
 /* --------------------------- */
 body {
   margin: 0;
-  padding-top: 25vh;
+  /* padding-top: 25vh; */
     font-family: sans-serif;
   font-family: 'Source Sans Pro', sans-serif;
   color: white;
@@ -72,21 +72,38 @@ box-shadow: -18px 17px 68px -15px rgba(0,0,0,0.75);
   color: black;
 
 }
+.button{ /*lado esquerdo*/
+  
+  float: left;
 
+
+}
+.button1{/*lado direito*/
+  
+  float: right;
+  
+  
+}
 
 .menu{
   font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
   background-color:black;
   color:rgb(222, 214, 214);
   border-radius: 25px;
-  margin-top:25px;
+  margin-top: 25px;
   height: 100px;
   text-align: right;
   padding: 30px;
   padding: right;
+  
+  
 }
-
-
+.fadeInRight:nth-child(2){
+  animation-delay: 0.2s
+}
+.fadeInRight:nth-child(3){
+  animation-delay: 0.4s
+}
 .menu:hover{
   background-color: rgb(98, 111, 105);
   transition-property: initial 
@@ -96,7 +113,7 @@ box-shadow: -18px 17px 68px -15px rgba(0,0,0,0.75);
   background-color: black;
   color: rgb(222, 214, 214);
   border-radius: 25px;
-  margin-top:25px;
+  margin-top: 25px;
   height: 100px;
   text-align: left;
   padding: 30px;
@@ -417,4 +434,47 @@ box-shadow: -18px 17px 68px -15px rgba(0,0,0,0.75);
   100% {
     transform: translateY(-1100px) rotate(-360deg);
   }
+}
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main-container {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
 }
