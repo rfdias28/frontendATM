@@ -45,11 +45,12 @@ function fazcontas(response) {
   for (let index = 0; index < response.length; index++) {
     
     
+    
   }
 }
 
 
-
+  // BELFODIL
   //contas a serem enviadas atraves da BD//
 
   $(document).ready(function () {

@@ -4,7 +4,6 @@
 function executeScriptRegister() {
   
 
-
   $("#voltar-button").click(function(event){
 
     event.preventDefault();

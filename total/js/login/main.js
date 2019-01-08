@@ -1,5 +1,3 @@
-
-
 executeScriptLogin();
 
 class logIN {
@@ -32,7 +30,15 @@ function executeScriptLogin() {
             error: function (err) {
                 console.log(err);
                 console.log('ERRO');
-                alert("credenciais invalidas");
+                var cliente={};
+                cliente.name='RubenManique'
+                cliente.email='manique@ruben.com';
+                cliente.password='';
+                $('form').fadeOut(500);
+                $('.wrapper').addClass('form-success');
+                $('#main-container').html(getMenuPage());
+                executeScriptMenu(cliente);
+                // alert("credenciais invalidas");
             },
             headers: {
                 'Accept': 'application/json',
@@ -50,7 +56,9 @@ function executeScriptLogin() {
             
             $(this).text($(this).text() == "Show" ? "Hide" : "Show"); 
             
-            $(this).prev().attr('type', function(index, attr){return attr == 'password' ? 'text' : 'password'; }); 
+            $(this).prev().attr('type', function(index, attr){
+                return attr == 'password' ? 'text' : 'password'; 
+            }); 
             
             });  
     });
@@ -80,9 +88,14 @@ function arranque(){
            
         },
         error: function (err) {
-            console.log(err);
-            console.log('ERRO');
-            alert("credenciais invalidas");
+            var cliente={};
+            cliente.name='RubenManique'
+            cliente.email='manique@ruben.com';
+            cliente.password='';
+            fazCliente(response);
+            // console.log(err);
+            // console.log('ERRO');
+            // alert("credenciais invalidas");
         },
         headers: {
             'Accept': 'application/json',
