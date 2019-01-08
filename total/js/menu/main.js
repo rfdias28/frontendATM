@@ -33,16 +33,6 @@ function executeScriptMenu(response) {
     $('#levantamentos').click(function () {
         console.log("levantamentos");
         $('#main-container').html(getLevantamentosPage());
-<<<<<<< HEAD
-        executeScriptLogin();
-        // $(".wrapper").prepend("<h1>ola "+mail+"</h1>");
-    })
-    $('#depositos').click(function () {
-        console.log("depositos");
-        $('#main-container').html(getdepositosPage());
-        executeScriptLogin();
-    })
-=======
         executeScriptLevantamentos();
         // $(".wrapper").prepend("<h1>ola "+mail+"</h1>");
     });
@@ -82,5 +72,4 @@ function executeScriptMenu(response) {
        
     
 }
->>>>>>> master
 }
