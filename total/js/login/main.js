@@ -27,7 +27,7 @@ function executeScriptLogin() {
                 $('form').fadeOut(500);
                 $('.wrapper').addClass('form-success');
                 $('#main-container').html(getMenuPage());
-                executeScriptMenu(mail);
+                executeScriptMenu(response);
             },
             error: function (err) {
                 console.log(err);
@@ -91,12 +91,7 @@ function arranque(){
     });
 
 
-    function fazCliente(response) {
-        for (let index = 0; index < response.length; index++) {
-            
-            
-        }
-    }
+    
 
 
 

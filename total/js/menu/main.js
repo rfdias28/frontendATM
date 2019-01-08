@@ -22,7 +22,8 @@
 
 
 // getMethod();
-function executeScriptMenu(mail) {
+function executeScriptMenu(response) {  
+    var cliente= response;
     $('#sair').click(function () {
         console.log("sair");
         $('#main-container').html(getLogInPage());
@@ -61,4 +62,14 @@ function executeScriptMenu(mail) {
         executeScriptDepositos();
         // $(".wrapper").prepend("<h1>ola "+mail+"</h1>");
     });
+    fazCliente(cliente);
+
+    function fazCliente(cliente) {
+    
+        document.getElementById("cnome").innerHTML=cliente.name;
+        document.getElementById("cemail").innerHTML=cliente.email;
+        document.getElementById("ctel").innerHTML=cliente.password;
+       
+    
+}
 }
