@@ -1,25 +1,31 @@
-var contas = [{ "numero": 1, "saldo": 1000 },
-{ "numero": 2, "saldo": 100 },
-{ "numero": 3, "saldo": 9000 },
-{ "numero": 4, "saldo": 10000000 },
-{ "numero": 5, "saldo": -10 }
-]
-//contas a serem enviadas atraves da BD//
-
-$(document).ready(function () {
+executeScriptLevantamentos()
 
 
-  for (let i = 0; i < contas.length; i++) {
-    const element = contas[i];
-    $('#accordionExample').append(getRow(element.numero, element.saldo));
+function executeScriptLevantamentos() {
+
+  var contas = [{ "numero": 1, "saldo": 1000 },
+  { "numero": 2, "saldo": 100 },
+  { "numero": 3, "saldo": 9000 },
+  { "numero": 4, "saldo": 10000000 },
+  { "numero": 5, "saldo": -10 }
+  ]
+  //contas a serem enviadas atraves da BD//
+
+  $(document).ready(function () {
+
   
-  }
 
-  $('#accordionExample').append('<br><button id="btn-sairlevantamento" onclick="" type="button" class="btn btn-outline-info">Voltar</button>');
+    for (let i = 0; i < contas.length; i++) {
+      const element = contas[i];
+      $('#accordionExample').append(getRow(element.numero, element.saldo));
 
-  function getRow(numeroConta, saldo) {
-    if(saldo<0){
-    return `        
+    }
+
+    $('#accordionExample').append('<br><button id="sair"  type="button" class="btn btn-outline-info">Voltar</button>');
+
+    function getRow(numeroConta, saldo) {
+      if (saldo < 0) {
+        return `        
     <div class="card">
     <div class="card-header" id="heading${numeroConta}">
       <h2 class="mb-0">
@@ -47,10 +53,10 @@ $(document).ready(function () {
     </div>
   </div>`;
 
-}
-else{ 
-  
-  return `        
+      }
+      else {
+
+        return `        
 <div class="card">
 <div class="card-header" id="heading${numeroConta}">
   <h2 class="mb-0">
@@ -76,16 +82,20 @@ else{
     </div>
   </div>
 </div>
-</div>`;}
-  }
+</div>`;
+      }
+    }
+
+    $("#sair").click(function () {
+      $('#main-container').html(getMenuPage());
+      executeScriptMenu();
+    });
+    // function sair(){
+    //   return menuincial
+    // }
+  });
 
 
-  // function sair(){
-  //   return menuincial
-  // }
-});
 
 
-
-
-
+}

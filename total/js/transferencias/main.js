@@ -1,5 +1,9 @@
-executeScriptDepositos()
-function executeScriptDepositos() {
+
+executeScriptTransferencias()
+
+
+function executeScriptTransferencias() {
+
   var contas = [{ "numero": 1, "saldo": 1000 },
   { "numero": 2, "saldo": 100 },
   { "numero": 3, "saldo": 9000 },
@@ -9,6 +13,7 @@ function executeScriptDepositos() {
   //contas a serem enviadas atraves da BD//
 
   $(document).ready(function () {
+
 
     for (let i = 0; i < contas.length; i++) {
       const element = contas[i];
@@ -20,6 +25,7 @@ function executeScriptDepositos() {
       $('#main-container').html(getMenuPage());
       executeScriptMenu();
     });
+
     function getRow(numeroConta, saldo) {
       if (saldo < 0) {
         return `        
@@ -39,10 +45,11 @@ function executeScriptDepositos() {
   
         <div class="row">
           <div class="col">
-            <input id="input${numeroConta}" type="number" class="form-control" disabled placeholder="Saldo nāo disponível para depósito">
+            <input id="input${numeroConta}" type="number" class="form-control"disabled placeholder="Saldo nāo disponível para transferência">
               </div>
             <div class="col">
-              <button class="btn btn-success">Depositar</button>
+              <button class="btn btn-danger"disabled>Transferência interna</button>
+              <button class="btn btn-danger"disabled>Transferência externa</button>
             </div>
           </div>
         </div>
@@ -70,10 +77,11 @@ function executeScriptDepositos() {
 
     <div class="row">
       <div class="col">
-        <input id="input${numeroConta}" type="number" class="form-control" placeholder="Quantia a depositar">
+        <input id="input${numeroConta}" type="number" class="form-control" placeholder="Quantia a transferir">
           </div>
         <div class="col">
-          <button class="btn btn-success">Depositar</button>
+          <button class="btn btn-success">Transferência interna</button>
+          <button class="btn btn-success">Transferência externa</button>
         </div>
       </div>
     </div>
@@ -83,8 +91,7 @@ function executeScriptDepositos() {
       }
     }
   });
-
-
+  
 
 
 

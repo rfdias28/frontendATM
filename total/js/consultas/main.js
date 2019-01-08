@@ -1,11 +1,55 @@
-executeScriptDepositos()
-function executeScriptDepositos() {
+
+executeScriptConsultas();
+function executeScriptConsultas() {
+
   var contas = [{ "numero": 1, "saldo": 1000 },
   { "numero": 2, "saldo": 100 },
   { "numero": 3, "saldo": 9000 },
   { "numero": 4, "saldo": 10000000 },
   { "numero": 5, "saldo": -10 }
   ]
+
+  function arranque(){
+    
+    $.ajax({
+        type: "GET",
+        url: `http://localhost:8080/ATM/api/account/getall${id}`,
+       
+        success: function (response) {
+            console.log(response);
+            console.log('sucesso');
+            
+         fazcontas(response);
+           
+        },
+        error: function (err) {
+            console.log(err);
+            console.log('ERRO');
+            
+        },
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+    });
+
+
+  }
+  class conta {
+    constructor(id, balance) {
+        this.id = id;
+        this.balance = balance;
+    }
+}
+function fazcontas(response) {
+  for (let index = 0; index < response.length; index++) {
+    
+    
+  }
+}
+
+
+
   //contas a serem enviadas atraves da BD//
 
   $(document).ready(function () {
@@ -30,6 +74,7 @@ function executeScriptDepositos() {
         <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#collapse${numeroConta}" aria-expanded="false" aria-controls="collapse${numeroConta}">
           Conta ${numeroConta} | (${saldo}) €
         </button>
+        
       </h2>
     </div>
   
@@ -86,6 +131,6 @@ function executeScriptDepositos() {
 
 
 
-
-
 }
+
+
