@@ -6,7 +6,10 @@ function getMenuPage() {
     <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
     <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
+      <h1>Nome: <a id="cnome">nome</a></h1><br>
+      <h2>Email:<a id="cemail">email</a><br></h2>
+      <h2>Telefone:  <a id="ctel">telefone</a></h2><br><br>
+      <span id="logout">logOUt</span>
     </div>
 
   </div>
