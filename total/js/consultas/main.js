@@ -1,16 +1,11 @@
 
 executeScriptConsultas();
 function executeScriptConsultas() {
-
-  var contas = [{ "numero": 1, "saldo": 1000 },
-  { "numero": 2, "saldo": 100 },
-  { "numero": 3, "saldo": 9000 },
-  { "numero": 4, "saldo": 10000000 },
-  { "numero": 5, "saldo": -10 }
-  ]
+  arranque();
+  var contas = []
 
   function arranque(){
-    
+    var contas = []
     $.ajax({
         type: "GET",
         url: `http://localhost:8080/ATM/api/account/getall${id}`,
@@ -43,7 +38,10 @@ function executeScriptConsultas() {
 }
 function fazcontas(response) {
   for (let index = 0; index < response.length; index++) {
-    
+    this.id= response[index].id;
+    this.balance= response[index].balance;
+    this.conta= new conta(id, balance);
+    contas.push(conta);
     
   }
 }
