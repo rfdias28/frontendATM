@@ -90,9 +90,7 @@ function executeScriptLevantamentos(cliente,idx) {
       $('#main-container').html(getMenuPage());
       executeScriptMenu(cliente,idx);
     });
-    // function sair(){
-    //   return menuincial
-    // }
+    
   });
 
 

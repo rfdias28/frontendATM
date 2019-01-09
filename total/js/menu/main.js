@@ -135,6 +135,12 @@ function executeScriptMenu(response, id) {
         executeScriptDepositos(cliente,idx);
         // $(".wrapper").prepend("<h1>ola "+mail+"</h1>");
     });
+    
+    // $('#alterarpin').click(function () {
+    //     console.log("alterarpin");
+    //     $('#main-container').html(getalterarpinPage());
+    //     executeScriptalterapin();
+
     fazCliente(cliente);
 
     function fazCliente(cliente) {

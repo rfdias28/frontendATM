@@ -1,5 +1,5 @@
 function getFormPage() {
-    //  $('link[title="mystyle"]').attr('href', 'css/register/main.css');
+      $('link[title="mystyle"]').attr('href', 'css/register/main.css');
     $('script[title="myscript"]').attr('href', 'js/register/main.js');
 
     return `  <div class="container center wrapper bg-bubbles ">
