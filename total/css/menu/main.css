@@ -20,10 +20,13 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   color: white;
   font-weight: 300;
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd_dSQu1K7F0dhdpdrPCHEC7nMhNMnZcXDPt2auyzrTkmrHgvd');
+  background-image: url('https://juegosrev.com/wp-content/uploads/2017/06/Wallpapers-Black-Gallery-67-Plus-PIC-WPW109585.jpg');
   background-attachment: fixed;
   background-position: center;
   height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .wrapper {
   background: #50a3a2;
@@ -86,7 +89,7 @@ box-shadow: -18px 17px 68px -15px rgba(0,0,0,0.75);
 }
 
 .menu{
-  font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+  font-family: "Arial Rounded MT", "Helvetica Rounded", Arial, sans-serif;
   background-color:black;
   color:rgb(222, 214, 214);
   border-radius: 25px;
@@ -109,7 +112,7 @@ box-shadow: -18px 17px 68px -15px rgba(0,0,0,0.75);
   transition-property: initial 
 }
 .menu1{
-  font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+  font-family: "Arial Rounded", "Helvetica Rounded", Arial, sans-serif;
   background-color: black;
   color: rgb(222, 214, 214);
   border-radius: 25px;

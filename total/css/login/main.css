@@ -50,7 +50,7 @@
       font-family: 'Source Sans Pro', sans-serif;
       color: white;
       font-weight: 300;
-      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd_dSQu1K7F0dhdpdrPCHEC7nMhNMnZcXDPt2auyzrTkmrHgvd');
+      background-image: url('http://wallpoper.com/images/00/44/81/59/black-background-wood-darker_00448159.jpg');
       
     }
     body ::-webkit-input-placeholder {
@@ -137,7 +137,7 @@
     form input:focus {
       background-color: white;
       width: 300px;
-      color: #53e3a6;
+      color: black;
     }
     form button {
       appearance: none;
@@ -145,7 +145,7 @@
       background-color: white;
       border: 0;
       padding: 10px 15px;
-      color: #53e3a6;
+      color:saddlebrown;
       border-radius: 3px;
       width: 250px;
       cursor: pointer;
