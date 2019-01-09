@@ -28,7 +28,7 @@ function getLogInPage() {
          <li>€</li>
          <li>¥</li>
          <li>£</li>
-         <li>.|.</li>
+         <li></li>
          <li>€</li>
          <li>¥</li>
          <li>£</li>
