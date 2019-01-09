@@ -1,66 +1,20 @@
 
-executeScriptConsultas();
-function executeScriptConsultas() {
-  arranque();
-  var contas = []
-
-  function arranque(){
-    var contas = []
-    $.ajax({
-        type: "GET",
-        url: `http://localhost:8080/ATM/api/account/getall${id}`,
-       
-        success: function (response) {
-            console.log(response);
-            console.log('sucesso');
-            
-         fazcontas(response);
-           
-        },
-        error: function (err) {
-            console.log(err);
-            console.log('ERRO');
-            
-        },
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-    });
-
-
-  }
-  class conta {
-    constructor(id, balance) {
-        this.id = id;
-        this.balance = balance;
-    }
-}
-function fazcontas(response) {
-  for (let index = 0; index < response.length; index++) {
-    this.id= response[index].id;
-    this.balance= response[index].balance;
-    this.conta= new conta(id, balance);
-    contas.push(conta);
-    
-  }
-}
-
-
-
+function executeScriptConsultas(cliente, id) {
   //contas a serem enviadas atraves da BD//
+  faztabela(contas);
+  // $(document).ready(function () {
+  function faztabela(contas) {
 
-  $(document).ready(function () {
 
     for (let i = 0; i < contas.length; i++) {
       const element = contas[i];
-      $('#accordionExample').append(getRow(element.numero, element.saldo));
+      $('#accordionExample').append(getRow(element.id, element.balance));
     }
 
     $('#accordionExample').append('<br><button id="sair"  type="button" class="btn btn-outline-info">Voltar</button>');
     $("#sair").click(function () {
       $('#main-container').html(getMenuPage());
-      executeScriptMenu();
+      executeScriptMenu(cliente, id);
     });
     function getRow(numeroConta, saldo) {
       if (saldo < 0) {
@@ -125,10 +79,11 @@ function fazcontas(response) {
 </div>`;
       }
     }
-  });
+  }
+  // );
+
+
 
 
 
 }
-
-

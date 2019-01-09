@@ -18,7 +18,7 @@ function getLogInPage() {
       </div>
 
       <ul class="bg-bubbles ">
-         <li ><img src="C:/Users/filip/Desktop/ATM_interface/v-14-512.png" style="width:100px;height:100px;"></li>
+         <li >$</li>
          <li>£</li>
          <li>$</li>
          <li>₿</li>

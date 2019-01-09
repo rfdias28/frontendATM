@@ -1,4 +1,4 @@
-
+var id = -1;
 
 executeScriptLogin();
 
@@ -10,7 +10,7 @@ class logIN {
 }
 
 function executeScriptLogin() {
-    
+
     $("#login-button").click(function (event) {
 
         event.preventDefault();
@@ -23,11 +23,13 @@ function executeScriptLogin() {
             data: JSON.stringify(data),
             success: function (response) {
                 console.log(response);
+                id = response.id;
                 console.log('sucesso');
                 $('form').fadeOut(500);
                 $('.wrapper').addClass('form-success');
                 $('#main-container').html(getMenuPage());
-                executeScriptMenu(response);
+                console.log("id " + id)
+                executeScriptMenu(response, id);
             },
             error: function (err) {
                 console.log(err);
@@ -41,18 +43,18 @@ function executeScriptLogin() {
         });
 
 
-        $(document).ready(function(){
-            $('.pass_show').append('<span class="ptxt">Show</span>');  
-            });
-              
-            
-            $(document).on('click','.pass_show .ptxt', function(){ 
-            
-            $(this).text($(this).text() == "Show" ? "Hide" : "Show"); 
-            
-            $(this).prev().attr('type', function(index, attr){return attr == 'password' ? 'text' : 'password'; }); 
-            
-            });  
+        $(document).ready(function () {
+            $('.pass_show').append('<span class="ptxt">Show</span>');
+        });
+
+
+        $(document).on('click', '.pass_show .ptxt', function () {
+
+            $(this).text($(this).text() == "Show" ? "Hide" : "Show");
+
+            $(this).prev().attr('type', function (index, attr) { return attr == 'password' ? 'text' : 'password'; });
+
+        });
     });
 
     executeScriptRegister();
@@ -64,7 +66,7 @@ function executeScriptLogin() {
         });
     }
 }
-function arranque(){
+function arranque() {
     var pass = document.getElementById("pass").value;
     var mail = document.getElementById("user").value;
     var data = new logIN(mail, pass)
@@ -76,8 +78,8 @@ function arranque(){
             console.log(response);
             console.log('sucesso');
             fazCliente(response);
-         
-           
+
+
         },
         error: function (err) {
             console.log(err);
@@ -91,7 +93,7 @@ function arranque(){
     });
 
 
-    
+
 
 
 

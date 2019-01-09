@@ -3,7 +3,7 @@ function getMenuPage() {
     $('script[title="myscript"]').attr('href', 'js/menu/main.js');
 
     return `<div>
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">></span>
     <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       <h1>Nome: <a id="cnome">nome</a></h1><br>

@@ -1,24 +1,24 @@
-executeScriptDepositos()
-function executeScriptDepositos() {
-  var contas = [{ "numero": 1, "saldo": 1000 },
-  { "numero": 2, "saldo": 100 },
-  { "numero": 3, "saldo": 9000 },
-  { "numero": 4, "saldo": 10000000 },
-  { "numero": 5, "saldo": -10 }
-  ]
+// executeScriptDepositos()
+function executeScriptDepositos(cliente,idx) {
+  // var contas = [{ "numero": 1, "saldo": 1000 },
+  // { "numero": 2, "saldo": 100 },
+  // { "numero": 3, "saldo": 9000 },
+  // { "numero": 4, "saldo": 10000000 },
+  // { "numero": 5, "saldo": -10 }
+  // ]
   //contas a serem enviadas atraves da BD//
 
   $(document).ready(function () {
 
     for (let i = 0; i < contas.length; i++) {
       const element = contas[i];
-      $('#accordionExample').append(getRow(element.numero, element.saldo));
+      $('#accordionExample').append(getRow(element.id, element.balance));
     }
 
     $('#accordionExample').append('<br><button id="sair"  type="button" class="btn btn-outline-info">Voltar</button>');
     $("#sair").click(function () {
       $('#main-container').html(getMenuPage());
-      executeScriptMenu();
+      executeScriptMenu(cliente,idx);
     });
     function getRow(numeroConta, saldo) {
       if (saldo < 0) {
