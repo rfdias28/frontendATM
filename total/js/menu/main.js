@@ -17,12 +17,11 @@
 //     console.log('arranque fim')
 // };
 
-
-
-
-
 // getMethod();
+
 function executeScriptMenu(response) {  
+    console.log('merdice');
+    
     var cliente= response;
     $('#sair').click(function () {
         console.log("sair");
@@ -62,6 +61,12 @@ function executeScriptMenu(response) {
         executeScriptDepositos();
         // $(".wrapper").prepend("<h1>ola "+mail+"</h1>");
     });
+    
+    // $('#alterarpin').click(function () {
+    //     console.log("alterarpin");
+    //     $('#main-container').html(getalterarpinPage());
+    //     executeScriptalterapin();
+
     fazCliente(cliente);
 
     function fazCliente(cliente) {

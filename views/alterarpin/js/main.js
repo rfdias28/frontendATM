@@ -1,24 +1,73 @@
-$("#nome").click(function(){
-    var nome= document.getElementById("nome").value;
-    var nomeConfirm= document.getElementById("nomeConfirm").value;
-
-    $("#divNome").remove();
-    $("#divNome").append(`<div id="divNome">
-                             <input  id="nome" class="fadeInLeft animated" type="text" placeholder="`+nome+`">
-                             <input id="nomeConfirm" class="fadeInRight animated" type="text" placeholder="Confirmar Nome">
-                         </div>`)
-});
 
 
-$(document).ready(function(){
-    $('.pass_show').append('<span class="ptxt">Show</span>');  
-    });
-      
-    
-    $(document).on('click','.pass_show .ptxt', function(){ 
-    
-    $(this).text($(this).text() == "Show" ? "Hide" : "Show"); 
-    
-    $(this).prev().attr('type', function(index, attr){return attr == 'password' ? 'text' : 'password'; }); 
-    
-    });  
+
+function executeScriptRegister() { 
+
+  $("#voltar-button").click(function(event){
+
+    event.preventDefault();
+  
+  $('form').fadeOut(500);
+
+  $('.wrapper').addClass('form-success');
+
+  $('#main-container').html(getLogInPage())
+  executeScriptLogin();
+  });
+  
+  console.log('cenas')
+
+
+
+function noNEED(id) {
+
+  var idx="#"+ toString(id)
+  $(idx).replaceWith("<p>No need for this</p>")
+}
+}
+// // ------------------
+// $(document).ready(function () {
+
+
+//   $('#formulario').submit(function (event) {
+//     console.log('Submetido');
+//     event.preventDefault();
+//     var nome = document.getElementById('inputNome').value;
+//     var email = document.getElementById('inputEmail').value;
+//     var pin = document.getElementById('pin');
+
+//     if (name.value == '' || email.value == ''|| pin.value == '') {
+//       alert('Verifique os seus campos')
+//       return false;
+//     }
+//     else {
+
+//       var data = {
+//         'service_id': 'atmupacademy',
+//         'template_id': 'template_upkGFoFm',
+//        'user_id': 'user_90pQzh9BSQnJmmXExn0fv',
+        
+//         'template_params': {
+//             'to_name': nome,
+//             'from_name':'Equipa ATM',
+//             'message_html':'treta a ser enviada',
+//             'reply_to':'atmupacademy@gmail.com',
+//             'mail_to':email
+//         }
+//     };
+//       $.ajax({
+//         url: "https://api.emailjs.com/api/v1.0/email/send",
+//         type: "POST",
+//         contentType: "application/json",
+//         data: JSON.stringify(data),
+//         success: function (data) {
+//           alert('Mensagem enviada')
+//         }, error: function (err) {
+//           console.log(err);
+          
+//           alert('Erro no envio');
+//         }
+//       });
+//     }
+//   });
+// });

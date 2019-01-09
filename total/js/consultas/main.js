@@ -43,11 +43,12 @@ function fazcontas(response) {
     this.conta= new conta(id, balance);
     contas.push(conta);
     
+    
   }
 }
 
 
-
+  // BELFODIL
   //contas a serem enviadas atraves da BD//
 
   $(document).ready(function () {

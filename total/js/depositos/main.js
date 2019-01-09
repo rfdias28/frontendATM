@@ -1,4 +1,5 @@
 executeScriptDepositos()
+
 function executeScriptDepositos() {
   var contas = [{ "numero": 1, "saldo": 1000 },
   { "numero": 2, "saldo": 100 },
