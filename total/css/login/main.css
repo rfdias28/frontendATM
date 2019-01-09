@@ -92,7 +92,10 @@
       height: 400px;
       margin-top: -200px;
       overflow: hidden;
-      opacity: 20%;
+      opacity: 0.90;
+      background-color: #57482dbf;
+
+      
     }
     .wrapper.form-success .container h1 {
       transform: translateY(85px);

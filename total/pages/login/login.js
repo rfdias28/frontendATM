@@ -3,7 +3,7 @@ function getLogInPage() {
       $('link[title="mystyle"]').attr('href', 'css/login/main.css');
     return `<div class="wrapper">
     <div class="container">
-      <h1 class="fadeInUP animated"> BANK</h1>
+      <h1 class="fadeInUP animated"> CGI BANK </h1>
       <div class="container">
       <form class="form">
       <input id="user" class="fadeInLeft animated" type="text"  placeholder="Número de Utilizador">
@@ -28,7 +28,7 @@ function getLogInPage() {
          <li>€</li>
          <li>¥</li>
          <li>£</li>
-         <li></li>
+         <li>€</li>
          <li>€</li>
          <li>¥</li>
          <li>£</li>
