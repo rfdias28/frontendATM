@@ -17,59 +17,63 @@
 //     console.log('arranque fim')
 // };
 
+
 var contas = [];
 
 class account {
-  constructor(id, balance) {
-    this.id = id;
-    this.balance = balance;
-  }
+    constructor(id, balance) {
+        this.id = id;
+        this.balance = balance;
+    }
 }
 
 
-console.log("id "+id)
+
+console.log("id " + id)
 
 function arranque(id) {
-    console.log("id "+id)
-  contas = []
-  this.id = id
-  $.ajax({
-    type: "GET",
-    url: `http://localhost:8080/ATM/api/account/getall${id}`,
-    success: function (response) {
-      console.log("response : " + response);
-      console.log(response);
-      console.log('sucesso');
-      fazcontas(response);
-    },
-    error: function (err) {
-      console.log(err);
-      console.log('ERRO');
-    },
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-  });
+    console.log("id " + id)
+    contas = []
+    this.id = id
+    $.ajax({
+        type: "POST",
+        url: `http://localhost:8080/ATM/api/client/getallaccountsfromclient/${id}`,
+        success: function (contasCliente) {
+            console.log("response : " + contasCliente);
+            console.log(contasCliente);
+            console.log('sucesso');
+            fazcontas(contasCliente);
+        },
+        error: function (err) {
+            console.log(err);
+            console.log('ERRO');
+        },
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+    });
 }
-function fazcontas(response) {
-  for (let index = 0; index < response.length; index++) {
-    this.id = response[index].id;
-    this.balance = response[index].balance;
-    this.conta = new account(id, balance);
-    contas.push(conta);
-    console.log(contas)
-  }
-  console.log("contas : " + contas)
+function fazcontas(contasCliente) {
+    for (let index = 0; index < contasCliente.length; index++) {
+        this.id = contasCliente[index].id;
+        this.balance = contasCliente[index].balance;
+        this.conta = new account(id, balance);
+        contas.push(conta);
+        console.log(contas)
+    }
+    console.log("contas : " + contas)
 }
 
 // getMethod();
 function executeScriptMenu(response, id) {
-    arranque(id);
-    var cliente = response;
-    var idx= id;
 
- $('#sair,#logout').click(function () {
+    // setTimeout(arranque(id), 10000);
+
+    var cliente = response;
+    var idx = id;
+
+    $('#sair,#logout').click(function () {
         console.log("sair");
         $('#main-container').html(getLogInPage());
         executeScriptLogin();
@@ -96,12 +100,16 @@ function executeScriptMenu(response, id) {
         });
     });
 
-
+    $('#teste').click(function () {
+        console.log("teste get accounts");
+        arranque(id);
+        
+    });
 
     $('#levantamentos').click(function () {
         console.log("levantamentos");
         $('#main-container').html(getLevantamentosPage());
-        executeScriptLevantamentos(cliente,idx);
+        executeScriptLevantamentos(cliente, idx);
         // $(".wrapper").prepend("<h1>ola "+mail+"</h1>");
     });
 
@@ -110,7 +118,7 @@ function executeScriptMenu(response, id) {
     $('#consultas').click(function () {
         console.log("consultas");
         $('#main-container').html(getConsultasPage());
-        executeScriptConsultas(cliente,idx);
+        executeScriptConsultas(cliente, idx);
         // $(".wrapper").prepend("<h1>ola "+mail+"</h1>");
     });
 
@@ -119,23 +127,23 @@ function executeScriptMenu(response, id) {
     $('#transferencias').click(function () {
         console.log("transferencias");
         $('#main-container').html(getTransferenciasPage());
-        executeScriptTransferencias(cliente,idx);
+        executeScriptTransferencias(cliente, idx);
         // $(".wrapper").prepend("<h1>ola "+mail+"</h1>");
     });
     $('#pin').click(function () {
         console.log("pin");
         $('#main-container').html(getPinPage());
-        executeScriptPin(cliente,idx);
+        executeScriptPin(cliente, idx);
         // $(".wrapper").prepend("<h1>ola "+mail+"</h1>");
     });
 
     $('#depositos').click(function () {
         console.log("depositos");
         $('#main-container').html(getDepositosPage());
-        executeScriptDepositos(cliente,idx);
+        executeScriptDepositos(cliente, idx);
         // $(".wrapper").prepend("<h1>ola "+mail+"</h1>");
     });
-    
+
     // $('#alterarpin').click(function () {
     //     console.log("alterarpin");
     //     $('#main-container').html(getalterarpinPage());

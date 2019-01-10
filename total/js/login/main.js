@@ -34,14 +34,14 @@ function executeScriptLogin() {
             error: function (err) {
                 console.log(err);
                 console.log('ERRO');
-                var cliente={};
-                cliente.name='RubenManique'
-                cliente.email='manique@ruben.com';
-                cliente.password='';
-                $('form').fadeOut(500);
-                $('.wrapper').addClass('form-success');
-                $('#main-container').html(getMenuPage());
-                executeScriptMenu(cliente);
+                // var cliente={};
+                // cliente.name='RubenManique'
+                // cliente.email='manique@ruben.com';
+                // cliente.password='';
+                // $('form').fadeOut(500);
+                // $('.wrapper').addClass('form-success');
+                // $('#main-container').html(getMenuPage());
+                // executeScriptMenu(cliente);
                 // alert("credenciais invalidas");
             },
             headers: {
@@ -74,40 +74,40 @@ function executeScriptLogin() {
         });
     }
 }
-function arranque() {
-    var pass = document.getElementById("pass").value;
-    var mail = document.getElementById("user").value;
-    var data = new logIN(mail, pass)
-    $.ajax({
-        type: "POST",
-        url: `http://localhost:8080/ATM/api/login/`,
-        data: JSON.stringify(data),
-        success: function (response) {
-            console.log(response);
-            console.log('sucesso');
-            fazCliente(response);
+// function arranque() {
+//     var pass = document.getElementById("pass").value;
+//     var mail = document.getElementById("user").value;
+//     var data = new logIN(mail, pass)
+//     $.ajax({
+//         type: "POST",
+//         url: `http://localhost:8080/ATM/api/login/`,
+//         data: JSON.stringify(data),
+//         success: function (response) {
+//             console.log(response);
+//             console.log('sucesso');
+//             fazCliente(response);
 
 
-        },
-        error: function (err) {
-            var cliente={};
-            cliente.name='RubenManique'
-            cliente.email='manique@ruben.com';
-            cliente.password='';
-            fazCliente(response);
-            // console.log(err);
-            // console.log('ERRO');
-            // alert("credenciais invalidas");
-        },
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-    });
-
-
-
+//         },
+//         error: function (err) {
+//             var cliente={};
+//             cliente.name='RubenManique'
+//             cliente.email='manique@ruben.com';
+//             cliente.password='';
+//             fazCliente(response);
+//             // console.log(err);
+//             // console.log('ERRO');
+//             // alert("credenciais invalidas");
+//         },
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json'
+//         },
+//     });
 
 
 
-}
+
+
+
+// }
