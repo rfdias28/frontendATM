@@ -19,8 +19,14 @@ function executeScriptLogin() {
         var data = new logIN(mail, pass)
         $.ajax({
             type: "POST",
+            // xhrFields: {
+            //     withCredentials: true
+            //  },
+             crossDomain: true,
             url: `http://localhost:8080/ATM/api/login/`,
             data: JSON.stringify(data),
+            credentials: 'same-origin',
+
             success: function (response) {
                 console.log(response);
                 id = response.id;
@@ -71,6 +77,7 @@ function executeScriptLogin() {
         $('#registerButton').click(function () {
 
             $('#main-container').html(getFormPage());
+            executarTemporario();
         });
     }
 }

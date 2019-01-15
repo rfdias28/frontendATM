@@ -56,7 +56,6 @@ function getMenuPage() {
         <div class="text-center col-sm-6">
           <div id="levantamentos" class="menu animated fadeInLeft shadow-left" onclick="">
             <button class="btn btn-outline-primary button"><strong>1</strong></button>
-            <canvas id="myChart" width="2px" height="2px"></canvas>
             <h3>
               Levantamentos
             </h3>

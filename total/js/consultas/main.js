@@ -1,5 +1,5 @@
 
-function executeScriptConsultas(cliente, id) {
+function executeScriptConsultas(contas, id) {
   //contas a serem enviadas atraves da BD//
   faztabela(contas);
   // $(document).ready(function () {

@@ -16,7 +16,7 @@
 //     });
 //     console.log('arranque fim')
 // };
-
+var cliente = {};
 
 var contas = [];
 
@@ -36,8 +36,13 @@ function arranque(id) {
     contas = []
     this.id = id
     $.ajax({
-        type: "POST",
+        type: "GET",
+        // xhrFields: {
+        //     withCredentials: true
+        //  },
+        crossDomain: true,
         url: `http://localhost:8080/ATM/api/client/getallaccountsfromclient/${id}`,
+        credentials: 'same-origin',
         success: function (contasCliente) {
             console.log("response : " + contasCliente);
             console.log(contasCliente);
@@ -48,10 +53,12 @@ function arranque(id) {
             console.log(err);
             console.log('ERRO');
         },
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
+        // headers: {
+        //     'Accept': 'application/json',
+        //     'Content-Type': 'application/json',
+        //     // 'Access- Control - Allow - Origin' :  '127.0.0.1 localhost.com',
+        //     // 'Access - Control - Allow - Credentials' : 'true'
+        // },
     });
 }
 function fazcontas(contasCliente) {
@@ -69,8 +76,8 @@ function fazcontas(contasCliente) {
 function executeScriptMenu(response, id) {
 
     // setTimeout(arranque(id), 10000);
-
-    var cliente = response;
+    arranque(id);
+    cliente = response;
     var idx = id;
 
     $('#sair,#logout').click(function () {
@@ -80,7 +87,7 @@ function executeScriptMenu(response, id) {
         $.ajax({
             type: "POST",
             url: `http://localhost:8080/ATM/api/login/logout`,
-
+            credentials: 'same-origin',
             success: function (response) {
                 console.log(response);
                 console.log('logout');
@@ -103,7 +110,7 @@ function executeScriptMenu(response, id) {
     $('#teste').click(function () {
         console.log("teste get accounts");
         arranque(id);
-        
+
     });
 
     $('#levantamentos').click(function () {
@@ -118,7 +125,7 @@ function executeScriptMenu(response, id) {
     $('#consultas').click(function () {
         console.log("consultas");
         $('#main-container').html(getConsultasPage());
-        executeScriptConsultas(cliente, idx);
+        executeScriptConsultas(contas, idx);
         // $(".wrapper").prepend("<h1>ola "+mail+"</h1>");
     });
 
@@ -159,4 +166,33 @@ function executeScriptMenu(response, id) {
 
 
     }
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        }
+
+    });
 }
