@@ -438,15 +438,18 @@ box-shadow: -18px 17px 68px -15px rgba(0,0,0,0.75);
     transform: translateY(-1100px) rotate(-360deg);
   }
 }
-.sidenav {
+/* .sidenav {
   height: 100%;
   width: 0;
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #111;
-  overflow-x: hidden;
+  color: rgb(230, 191, 140); */
+  /* color: rgb(0, 0, 0); */
+  /* background-color: #111; */
+  /* background-image: url(https://media.giphy.com/media/lDOBJkpstriNy/giphy.gif); */
+  /* overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
 }
@@ -475,7 +478,7 @@ box-shadow: -18px 17px 68px -15px rgba(0,0,0,0.75);
 #main-container {
   transition: margin-left .5s;
   padding: 16px;
-}
+} */
 
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}

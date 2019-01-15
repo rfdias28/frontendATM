@@ -1,7 +1,7 @@
 
 
-function getConsultasPage() {
-    $('link[title="myscript"]').attr('href', 'js/consultas/main.js');
+function getConsultasPage(id) {
+    $('link[title="myscript"]').attr('src', 'js/consultas/main.js');
     $('link[title="mystyle"]').attr('href', 'css/paginas/main.css');
 
   return `<div >
@@ -13,4 +13,6 @@ function getConsultasPage() {
     
   </div>
   </div>
-</div>`}
+</div>
+
+`}
