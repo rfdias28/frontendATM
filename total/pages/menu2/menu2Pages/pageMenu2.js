@@ -204,8 +204,8 @@ function getMenuPage() {
 <!-- import dos graficos -->
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
-<script src="C:\Users\filip\Documents\GitHub\frontendATM\total\pages\menu2\menu2.js"></script>
-<script src="C:\Users\filip\Documents\GitHub\frontendATM\total\pages\menu2\movimentos.js"></script>` );
+<script src="pages\menu2\menu2.js"></script>
+<script src="pages\menu2\movimentos.js"></script>` );
 
 //     return `
 
