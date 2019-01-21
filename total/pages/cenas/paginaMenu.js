@@ -1,10 +1,10 @@
 
 function paginaMenu() {
-    $("#main-container").remove();
+    $("#main-container1").remove();
     $("body").prepend(
 
         `
-
+<body>
     <nav class="navbar   navbar-default">
         <div class="container-fluid  ">
             <div class="navbar-header">
@@ -144,7 +144,7 @@ function paginaMenu() {
 
     </div>
 
-
+    </body>
    
 `
     );
