@@ -1,5 +1,5 @@
 var id = -1;
-executeScriptLogin();
+// executeScriptLogin();
 
 class logIN {
     constructor(email, password) {
@@ -11,11 +11,13 @@ class logIN {
 
 
 function executeScriptLogin() {
+    console.log("loginjs")
     $("#login-button").click(function (event) {
         event.preventDefault();
         var pass = document.getElementById("pass").value;
         var mail = document.getElementById("user").value;
         var data = new logIN(mail, pass)
+        console.log(data)
         $.ajax({
             type: "POST",
             // xhrFields: {
@@ -27,19 +29,18 @@ function executeScriptLogin() {
             credentials: 'same-origin',
 
             success: function (response) {
-                console.log(response);
-                id = response.id;
+                console.log(response.client.espechial);
+                id = response.client.id;
                 console.log('sucesso');
                 $('form').fadeOut(500);
                 $('.wrapper').addClass('form-success');
-                if (response.client.espechial === 0) {
-                   executeScriptClient(response);
+                if (response.client.espechial === false) {
+                    window.location.href = `pages/user/index2.html?param=${JSON.stringify(response)}`;
+                    // executefirstScript(response)
                 } else {
-                    window.location.href = 'pages/user/index2.html'
+                    window.location.href = 'final/final.html'
+
                 }
-
-
-
                 // $('#main-container').html(getMenuPage());
                 console.log("id " + id)
                 // executeScriptMenu(response, id);

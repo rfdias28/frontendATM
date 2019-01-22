@@ -1,5 +1,11 @@
 var logInManager = "1580699625/1548768925824/-1179379935";
 var tokenExpire = "1580699625/1548768925824"
+
+
+const urlParams = new URLSearchParams(window.location.search);
+const myParam = JSON.parse(urlParams.get('param'));
+executeScriptClient(myParam)
+console.log(myParam)
 function logOUT() {
   $.ajax({
     type: "POST",
@@ -25,13 +31,18 @@ function logOUT() {
 
   });
  window.location.href = './../../index.html'
-}
+}                    
+
 function executeScriptClient(response) {
-  logInManager = response.token + "/" + response.expire + "/" + response.espechial
+  if (response.espechial==1) {
+    logInManager = response.token + "/" + response.expire + "/" + response.espechial
+  } else {
+    logInManager = response.token + "/" + response.expire + "/" + 0
+  }
+  
   tokenExpire = response.token + "/" + response.expire
   id=response.client.id;
-  window.location.href = 'final/final.html'
-
+  
 
 $(function () {
   'use strict';
@@ -45,48 +56,26 @@ $(function () {
   var corLegenda = ['text-red', 'text-green', 'text-yellow', 'text-aqua', 'text-light-blue', 'text-gray'];
 
  
-  quickLogIn();
-  function quickLogIn() {
-    var manager = {
-      "email": "manager@mail.com",
-      "password": "passwordsupersecreta"
-    }
-    $.ajax({
-      type: "POST",
-      url: `http://localhost:8080/ATM/api/login`,
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
 
-      },
-      data: JSON.stringify(manager),
-      success: function (response) {
-        console.log('quickLogIn');
-        console.log(response);
-        logInManager = response.token + "/" + response.expire + "/" + response.espechial
-        tokenExpire = response.token + "/" + response.expire
-        executeScript();
-
-      },
-      error: function (err) {
-        console.log(err);
-        console.log('ERRO');
-
-      }
-    });
-  }
+  executeScript();
   function executeScript() {
-    getInfoClient(id, logInManager)
+    getInfoClient(id, tokenExpire)
     getInfoSaldoPorBanco(id, tokenExpire);
     getInfoDebitsByClient(id, logInManager);
-    getAllMovementsFromClient(id, logInManager)
+    // getAllMovementsFromClient(id, logInManager)
   }
-  function getInfoClient(id, logInManager) {
+
+  function getInfoClient(id, tokenExpire) {
+    console.log('getInfoClient');
+    console.log(id);
+    console.log(tokenExpire);
+    
+    
+    
     $.ajax({
       type: "GET",
-
       crossDomain: true,
-      url: `http://localhost:8080/ATM/api/client/${id}/${logInManager}`,
+      url: `http://localhost:8080/ATM/api/client/${id}/${tokenExpire}`,
       credentials: 'same-origin',
       headers: {
         'Accept': 'application/json',

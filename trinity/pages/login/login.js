@@ -1,5 +1,5 @@
 function getLogInPage() {
- 
+ console.log("loginpage")
       $('link[title="mystyle"]').attr('href', './pages/login/main.css');
     return `<div class="wrapper">
     <div class="container">
