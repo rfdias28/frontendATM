@@ -296,18 +296,20 @@ function sendUpdateClient(id) {
         success: function (response) {
             console.log(response);
             console.log('UPDATE sucesso');
-
             getInfoClients();
+
 
         },
         error: function (err) {
             console.log(err);
             console.log('ERRO');
+            getInfoClients();
         }
 
     });
     console.log('fim sendupdate');
     // setTimeout(" arranque()", 100);
+
 }
 function makeTableAccounts() {
     console.log('makeTableAccounts inicio')
@@ -403,7 +405,7 @@ function makeTableMovements() {
     for (let index = 0; index < movements.length; index++) {
 
         this.id = movements[index].id;
-        this.date = new Date (movements[index].date);
+        this.date = new Date(movements[index].date);
         this.description = movements[index].description;
         this.debit = movements[index].debit;
         this.credit = movements[index].credit;
@@ -666,7 +668,7 @@ function deleteMovement(id) {
 function rUsureClient() {
     $("#rUsureClient").replaceWith(`<button id="rUsureClient"
      class=" btn-danger btn" onclick="okCliente()"><strong>R U SURE?</strong></button>`)
-     timedRefresh(3000);
+    timedRefresh(3000);
 
 }
 function okCliente() {
@@ -674,7 +676,7 @@ function okCliente() {
      class=" btn-danger btn" onclick="deleteAllClients()"><strong>Delete ALL Clients</strong></button>`)
 }
 function deleteAllClients() {
-for (let index = 0; index < clients.length; index++) {
+    for (let index = 0; index < clients.length; index++) {
         var x = clients[index].id
         deleteClient(x);
     }
@@ -683,14 +685,14 @@ for (let index = 0; index < clients.length; index++) {
 function rUsureAccount() {
     $("#rUsureAccount").replaceWith(`<button id="rUsureAccount"
      class=" btn-danger btn" onclick="okAccount()"><strong>R U SURE?</strong></button>`)
-     timedRefresh(4000);
+    timedRefresh(4000);
 }
 function okAccount() {
     $("#rUsureAccount").replaceWith(`<button id="rUsureAccount"
      class=" btn-danger btn" onclick="deleteAllAccounts()"><strong>Delete ALL Accounts</strong></button>`)
 }
 function deleteAllAccounts() {
-for (let index = 0; index < accounts.length; index++) {
+    for (let index = 0; index < accounts.length; index++) {
         var x = accounts[index].id
         deleteAccount(x);
     }
@@ -699,14 +701,14 @@ for (let index = 0; index < accounts.length; index++) {
 function rUsureMovement() {
     $("#rUsureMovement").replaceWith(`<button id="rUsureMovement"
      class=" btn-danger btn" onclick="okMovement()"><strong>R U SURE?</strong></button>`)
-     timedRefresh(4000);
+    timedRefresh(4000);
 }
 function okClient() {
     $("#rUsureMovement").replaceWith(`<button id="rUsureMovement"
      class=" btn-danger btn" onclick="deleteAllMovements()"><strong>Delete ALL Movements</strong></button>`)
 }
 function deleteAllMovements() {
-for (let index = 0; index < movements.length; index++) {
+    for (let index = 0; index < movements.length; index++) {
         var x = movements[index].id
         deleteMovement(x);
     }

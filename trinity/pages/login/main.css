@@ -50,7 +50,7 @@
       font-family: 'Source Sans Pro', sans-serif;
       color: white;
       font-weight: 300;
-      background-image: url('http://www.androidguys.com/wp-content/uploads/2016/01/new-york-city-background-black-and-white.jpg');
+      background-image: url('C:/Users/filip/Documents/GitHub/frontendATM/trinity/new-york-city-background-black-and-white-_mais_claro.jpg');
       
     }
     body ::-webkit-input-placeholder {
@@ -80,11 +80,18 @@
       font-weight: 300;
     }
     .wrapper {
-      background: #50a3a2;
+      /* background: #50a3a2;
       background: -webkit-linear-gradient(top left, #f4bd0880 0%,#98440377 100%);
       background: -moz-linear-gradient(top left#f4bd0880 0%,#98440377 100%);
       background: -o-linear-gradient(top left#f4bd0880 0%,#98440377 100%);
-      background: linear-gradient(to bottom right,#f4bd0880 0%,#98440377 100%);
+      background: linear-gradient(to bottom right,#f4bd0880 0%,#98440377 100%); */
+      background: rgba(73,155,234,0.87);
+      background: -moz-linear-gradient(top, rgba(73,155,234,0.87) 0%, rgba(34,125,229,0.87) 49%, rgba(32,124,229,0.87) 51%, rgba(32,124,229,0.77) 100%);
+      background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(73,155,234,0.87)), color-stop(49%, rgba(34,125,229,0.87)), color-stop(51%, rgba(32,124,229,0.87)), color-stop(100%, rgba(32,124,229,0.77)));
+      background: -webkit-linear-gradient(top, rgba(73,155,234,0.87) 0%, rgba(34,125,229,0.87) 49%, rgba(32,124,229,0.87) 51%, rgba(32,124,229,0.77) 100%);
+      background: -o-linear-gradient(top, rgba(73,155,234,0.87) 0%, rgba(34,125,229,0.87) 49%, rgba(32,124,229,0.87) 51%, rgba(32,124,229,0.77) 100%);
+      background: -ms-linear-gradient(top, rgba(73,155,234,0.87) 0%, rgba(34,125,229,0.87) 49%, rgba(32,124,229,0.87) 51%, rgba(32,124,229,0.77) 100%);
+      background: linear-gradient(to bottom, rgba(73,155,234,0.87) 0%, rgba(34,125,229,0.87) 49%, rgba(32,124,229,0.87) 51%, rgba(32,124,229,0.77) 100%);
       position: absolute;
       top: 50%;
       left: 0;
@@ -394,7 +401,7 @@ form button:hover {
   background-color: #f5f7f9;
 /* } */
 .bg-bubbles {
-  /* background-image: url(C:\Users\filip\Desktop\ATM_interface\v-14-512.png); */
+  /* background-image: url(C:/Users/filip/Desktop/ATM_interface/v-14-512.png); */
   position: absolute;
   top: 0;
   right: 0%;

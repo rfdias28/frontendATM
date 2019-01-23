@@ -86,8 +86,10 @@ function executeScriptClient(response) {
     var id = 8;
     var PieData = [];
     var PieData3 = [];
+    var PieData2 = [];
     var dataGraficoMovimentos = [];
     var cenas = [];
+    var final=[];
     var legenda = [];
     var colorHighlight = ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de',];
     var corLegenda = ['text-red', 'text-green', 'text-yellow', 'text-aqua', 'text-light-blue', 'text-gray'];
@@ -101,7 +103,8 @@ function executeScriptClient(response) {
       getInfoClient(id, tokenExpire)
       getInfoSaldoPorBanco(id, tokenExpire);
       getInfoDebitsByClient(id, logInManager);
-      getAllMovementsFromClient(id, logInManager)
+      getAllMovementsFromClient(id, logInManager);
+      getInfoCreeditsByClient(id, logInManager)
     }
 
     function getInfoClient(id, tokenExpire) {
@@ -186,7 +189,7 @@ function executeScriptClient(response) {
           highlight: colHIg,
           label: labela
         }
-        $(".saldoTotal").html('Saldo Total '+saldo + ' €')
+        $(".saldoTotal").html('Saldo Total ' + saldo + ' €')
 
         PieData.push(string)
         console.log(PieData)
@@ -197,7 +200,7 @@ function executeScriptClient(response) {
       // console.log("fazDataSaldoPorBanco : fim")
       // graficoSaldoPorBanco()
       pieChart1.Doughnut(PieData, pieOptions);
-      pieChart2.Doughnut(PieData, pieOptions);
+      // pieChart2.Doughnut(PieData, pieOptions);
     }
     function getInfoDebitsByClient(id, logInManager) {
       PieData3 = [];
@@ -231,6 +234,61 @@ function executeScriptClient(response) {
         },
 
       });
+    }
+    function getInfoCreeditsByClient(id, logInManager) {
+      PieData2 = [];
+
+
+      $.ajax({
+        type: "GET",
+
+        crossDomain: true,
+        url: `http://localhost:8080/ATM/api/movement/getcreditsbytypefromclient/${id}/${logInManager}`,
+        credentials: 'same-origin',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        success: function (rawDCreditsByClient) {
+          console.log(rawDCreditsByClient);
+          console.log('sucesso rawDebitsByClient');
+          fazDataCreditsByClient(rawDCreditsByClient)
+        },
+        error: function (err) {
+          console.log(err);
+          console.log('ERRO');
+        },
+
+      });
+    }
+    function fazDataCreditsByClient(rawDCreditsByClient) {
+      console.log(rawDCreditsByClient)
+      console.log("fazDataCreditsByClient : inicio")
+      var rawDCreditsByClient = rawDCreditsByClient;
+      var array = Object.keys(rawDCreditsByClient)
+      var array = Object.keys(rawDCreditsByClient)
+      for (let index = 0; index < array.length; index++) {
+
+        var labela = array[index];
+
+        var ya = rawDCreditsByClient[labela];
+        var colHIg = colorHighlight[index];
+
+        // saldo += ya;
+        var corL = corLegenda[index]
+        var string = {
+          value: ya,
+          color: colHIg,
+          highlight: colHIg,
+          label: labela
+        }
+        PieData2.push(string)
+        console.log(PieData3)
+        $("#graficoBanco2").append(`<li><i class="fa fa-circle-o ` + corL + `"></i>` + labela + `</li>`)
+
+      }
+      console.log("fazDataCreditsByClient : fim")
+      pieChart2.Doughnut(PieData2, pieOptions);
     }
     function fazDataDebitsByClient(rawDebitsByClient) {
       console.log(rawDebitsByClient)
@@ -334,10 +392,15 @@ function executeScriptClient(response) {
       }
 
     }
+
     function fazDataMovementsFromClient(movementsFromClient) {
       console.log(movementsFromClient)
       console.log("fazDataMovementsFromClient : inicio")
       dataGraficoMovimentos = [];
+      var saldos = {};
+      var saldosArr = [];
+
+      
 
       for (let i = 0; i < movementsFromClient.length; i++) {
         cenas.push(movementsFromClient[i].balance)
@@ -351,42 +414,71 @@ function executeScriptClient(response) {
         legenda.push(date)
         a.push(" ")
       }
+
+
       console.log(cenas)
       console.log('legenda')
       console.log(legenda)
+      for (let i = 0; i < movementsFromClient.length; i++) {
+        const element = movementsFromClient[i];
+        if (!saldos[element.bank]) {
+          saldos[element.bank] = element.balance;
+        }
+        else {
+          saldos[element.bank] = saldos[element.bank] + element.credit - element.debit;
+
+        }
+        saldosArr.push(JSON.parse(JSON.stringify(saldos)));
+      }
+      console.log(saldosArr);
+
+      final=saldosArr.map((el) => {
+        let keys = Object.keys(el);
+        let soma = 0;
+        for (let i = 0; i < keys.length; i++) {
+          const element = keys[i];
+          soma += el[element];
+        }
+        return soma
+      })
+      console.log(final);
+      var salesChartData = {
+        labels: a,
+        datasets: [
+          {
+            label               : 'Digital Goods',
+              fillColor           : 'rgba(60,141,188,0.9)',
+              strokeColor         : 'rgba(60,141,188,0.8)',
+              pointColor          : '#3b8bba',
+              pointStrokeColor    : 'rgba(60,141,188,1)',
+              pointHighlightFill  : '#fff',
+              pointHighlightStroke: 'rgba(60,141,188,1)',
+            pointHighlightStroke: 'rgba(60,141,188,1)',
+            data: final
+          },
+          // {
+          //   label               : 'Digital Goods',
+          //   fillColor           : 'rgba(60,141,188,0.9)',
+          //   strokeColor         : 'rgba(60,141,188,0.8)',
+          //   pointColor          : '#3b8bba',
+          //   pointStrokeColor    : 'rgba(60,141,188,1)',
+          //   pointHighlightFill  : '#fff',
+          //   pointHighlightStroke: 'rgba(60,141,188,1)',
+          //   data                : [28, 48, 40, 19, 86, 27, 90]
+          // }
+        ]
+      };
       salesChart.Line(salesChartData, salesChartOptions);
 
     }
+
+    
     var salesChartCanvas = $('#salesChart').get(0).getContext('2d');
     var salesChart = new Chart(salesChartCanvas);
 
 
 
-    var salesChartData = {
-      labels: a,
-      datasets: [
-        {
-          label: 'Electronics',
-          fillColor: 'rgba(210, 214, 222, 1)',
-          strokeColor: 'rgba(210, 214, 222, 1)',
-          pointColor: 'rgba(210, 214, 222, 1)',
-          pointStrokeColor: '#c1c7d1',
-          pointHighlightFill: '#fff',
-          pointHighlightStroke: 'rgba(220,220,220,1)',
-          data: cenas
-        },
-        // {
-        //   label               : 'Digital Goods',
-        //   fillColor           : 'rgba(60,141,188,0.9)',
-        //   strokeColor         : 'rgba(60,141,188,0.8)',
-        //   pointColor          : '#3b8bba',
-        //   pointStrokeColor    : 'rgba(60,141,188,1)',
-        //   pointHighlightFill  : '#fff',
-        //   pointHighlightStroke: 'rgba(60,141,188,1)',
-        //   data                : [28, 48, 40, 19, 86, 27, 90]
-        // }
-      ]
-    };
+
 
     var salesChartOptions = {
       // Boolean - If we should show the scale at all
@@ -428,7 +520,7 @@ function executeScriptClient(response) {
     };
 
     // Create the line chart
-    salesChart.Line(salesChartData, salesChartOptions);
+    // salesChart.Line(salesChartData, salesChartOptions);
 
     // ---------------------------
     // - END MONTHLY SALES CHART -
