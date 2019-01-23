@@ -8,10 +8,11 @@ function getLogInPage() {
       <form class="form">
       <input id="user" class="fadeInLeft animated" type="text"  placeholder="Número de Utilizador">
       <!--colocar numero como username-->
-      <input id="pass" class="fadeInRight animated pass_show" type="text" placeholder="Password" >
+      <input id="pass" class="fadeInRight animated .pass_show" type="text" placeholder="Password" >
       <!--colocar numero como password-->
       <button type="submit" class="fadeInDown animated" id="login-button">LOGIN</button>
       <p class="fadeInDown animated" id="registerButton">Register here</p>
+      <input class="fadeInDown animated" type="checkbox" onclick="myFunction()">
 
 
     </form>

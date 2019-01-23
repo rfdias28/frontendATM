@@ -8,7 +8,14 @@ class logIN {
     }
 }
 
-
+function myFunction() {
+    var x = document.getElementById("pass");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
 
 function executeScriptLogin() {
     console.log("loginjs")
@@ -75,9 +82,12 @@ function executeScriptLogin() {
 
     function executeScriptRegister() {
         $('#registerButton').click(function () {
-
-            $('#main-container').html(getFormPage());
-            executarTemporario();
+            document.getElementById('main-container').innerHTML = getFormPage()
+            executeScriptForm()
+            // executeScriptLogin() ;
+        //     console.log("mainjs")
+        //     $('#main-container').html(getFormPage());
+        //     executarTemporario();
         });
     }
 }

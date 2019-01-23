@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./main.css">
     <link title="mystyle" rel="stylesheet" type="text/css" media="screen" href="pages\login\main.css" />
 
-    
+    <script src="./pages/register/form.js"></script>
 </head>
 <body>
     <div id="main-container">
@@ -41,12 +41,19 @@
 <!-- <script src="pages\user\dist/js/pages/dashboard2.js"></script> -->
 <!-- AdminLTE for demo purposes -->
 <!-- <script src="pages\user\dist/js/demo.js"></script> -->
-
+<script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+<script type="text/javascript">
+  (function(){
+     emailjs.init("user_90pQzh9BSQnJmmXExn0fv");
+  })();
+</script>
    <script src="./pages/login/login.js"></script>
 
    <!-- <script src="pages\user\dist\js\pages\dashboard2.js"></script> -->
-<script src="./pages/login/main.js"></script>
+<script src="./pages/login/main.js"></script>   
+
 <script title="myscript" src="./main.js"></script>
+
     
 </body>
 </html>

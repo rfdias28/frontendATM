@@ -45,8 +45,9 @@ class Movement {
         this.balance = balance;
     }
 }
-quickLogIn();
+quickLogIn()
 function quickLogIn() {
+    console.log("quickLogin")
     var manager = {
         "email": "manager@mail.com",
         "password": "passwordsupersecreta"
@@ -86,7 +87,7 @@ function getInfoClients() {
     clients = [];
     console.log('getInfoClients inicio')
     $.ajax({
-        url: `http://localhost:8080/ATM/api/client/listentity/${logInManager}`,
+        url: `http://localhost:8080/ATM/api/client/listentity/${logInManager} `,
         method: 'get',
         success: function (clientRaw) {
             console.log('clientRaw');
