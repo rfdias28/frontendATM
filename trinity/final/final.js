@@ -16,33 +16,37 @@ var reload = `<script>console.log('ola');function timedRefresh(timeoutPeriod) {s
 ,timeoutPeriod);}window.onload = timedRefresh(7000);</script>`;
 // -------------
 class Client {
-    constructor(id, email, name, password, tel, espechial, expire, token) {
+    constructor(id, email, name, password, tel, special, expire, token) {
         this.id = id;
         this.email = email;
         this.name = name;
         this.password = password;
         this.tel = tel;
-        this.espechial = espechial;
+        this.special = special;
         this.expire = expire;
         this.token = token;
     }
 }
 class Account {
-    constructor(id, balance, bank) {
+    constructor(id, balance, bank, user) {
         this.id = id;
         this.balance = balance;
         this.bank = bank;
+        this.user = user;
+        
 
     }
+
 }
 class Movement {
-    constructor(id, date, description, debit, credit, balance) {
+    constructor(id, date, description, debit, credit, balance,accountId) {
         this.id = id;
         this.date = date;
         this.description = description;
         this.debit = debit;
         this.credit = credit;
         this.balance = balance;
+        this.accountId = accountId;
     }
 }
 quickLogIn()
@@ -66,7 +70,7 @@ function quickLogIn() {
         success: function (response) {
             console.log('quickLogIn');
             console.log(response);
-            logInManager = response.token + "/" + response.expire + "/" + response.espechial
+            logInManager = response.token + "/" + response.expire + "/" + response.special
             tokenExpire = response.token + "/" + response.expire
             executeScript();
 
@@ -144,12 +148,12 @@ function makeArrayClients(clientRaw) {
         this.name = clientRaw[index].name;
         this.password = clientRaw[index].password;
         this.tel = clientRaw[index].tel;
-        this.espechial = clientRaw[index].espechial;
+        this.special = clientRaw[index].special;
         this.expire = clientRaw[index].expire;
 
         this.token = clientRaw[index].token;
 
-        var clientX = new Client(id, email, name, password, tel, espechial, expire, token)
+        var clientX = new Client(id, email, name, password, tel, special, expire, token)
         clients.push(clientX);
     }
     console.log(clients);
@@ -163,7 +167,8 @@ function makeArrayAccounts(accountsRaw) {
         this.id = accountsRaw[index].id;
         this.balance = accountsRaw[index].balance;
         this.bank = accountsRaw[index].bank;
-        var accountX = new Account(id, balance, bank);
+        this.userId = accountsRaw[index].userId;
+        var accountX = new Account(id, balance, bank, userId);
         accounts.push(accountX);
     }
     console.log(accounts);
@@ -179,7 +184,9 @@ function makeArrayMovements(movementsRaw) {
         this.debit = movementsRaw[index].debit;
         this.credit = movementsRaw[index].credit;
         this.balance = movementsRaw[index].balance;
-        var movementX = new Movement(id, date, description, debit, credit, balance);
+        this.accountId = movementsRaw[index].accountId;
+        
+        var movementX = new Movement(id, date, description, debit, credit, balance,accountId);
         movements.push(movementX);
     }
     console.log(movements);
@@ -197,7 +204,7 @@ function makeTableClients() {
         this.name = clients[index].name;
         this.password = clients[index].password;
         this.tel = clients[index].tel;
-        this.espechial = clients[index].espechial;
+        this.special = clients[index].special;
         this.expire = clients[index].expire;
 
         this.token = clients[index].token;
@@ -214,7 +221,7 @@ function makeTableClients() {
             '`,`' + name +
             '`,' + password +
             ',' + tel +
-            ',' + espechial +
+            ',' + special +
             ',' + expire +
             ',' + token +
             ')">Update Cliente</button>' +
@@ -227,7 +234,7 @@ function makeTableClients() {
             '<td id="tdNAME' + index + '">' + name + '</td>' +
             '<td id="tdPASSWORD' + index + '">' + password + '</td>' +
             '<td id="tdTEL' + index + '">' + tel + '</td>' +
-            '<td id="tdESPECHIAL' + index + '">' + espechial + '</td>' +
+            '<td id="tdspecial' + index + '">' + special + '</td>' +
             '<td id="tdEXPIRE' + index + '">' + expire + '</td>' +
             '<td id="tdTOKEN' + index + '">' + token + '</td>' +
 
@@ -239,7 +246,7 @@ function makeTableClients() {
     $("#TableClients:last-child").append('</tbody>')
     console.log('makeTableClients fim')
 };
-function updateClient(index, id, email, name, password, tel, espechial, expire, token) {
+function updateClient(index, id, email, name, password, tel, special, expire, token) {
     var b = String(index);
     var rowID = "#tr" + b
 
@@ -247,7 +254,7 @@ function updateClient(index, id, email, name, password, tel, espechial, expire, 
     var nameID = "#tdNAME" + b
     var passwordID = "#tdPASSWORD" + b
     var telID = "#tdTEL" + b
-    var espechialID = "#tdESPECHIAL" + b
+    var specialID = "#tdspecial" + b
     var expireID = "#tdEXPIRE" + b
     var tokenID = "#tdTOKEN" + b
 
@@ -258,7 +265,7 @@ function updateClient(index, id, email, name, password, tel, espechial, expire, 
     $(nameID).replaceWith('<th><input size="4" placeholder="name" name="name" value="' + name + '" id="name1"></th>');
     $(passwordID).replaceWith('<th><input size="4" placeholder="password" name="password" value="' + password + '" id="password1"></th>');
     $(telID).replaceWith('<th><input size="4" placeholder="tel" name="tel" value="' + tel + '" id="tel1"></th>');
-    $(espechialID).replaceWith('<th><input size="4" placeholder="espechial" name="espechial" value="' + espechial + '" id="espechial1"></th>');
+    $(specialID).replaceWith('<th><input size="4" placeholder="special" name="special" value="' + special + '" id="special1"></th>');
     $(expireID).replaceWith('<th><input size="4" placeholder="expire" name="expire" value="' + expire + '" id="expire1"></th>');
     $(tokenID).replaceWith('<th><input size="4" placeholder="token" name="token" value="' + token + '" id="token1"></th>');
 
@@ -275,12 +282,21 @@ function sendUpdateClient(id) {
     var name = document.getElementById("name1").value;
     var password = document.getElementById("password1").value;
     var tel = document.getElementById("tel1").value;
-    var espechial = document.getElementById("espechial1").value;
-    var espechial = document.getElementById("expire1").value;
+    var special = document.getElementById("special1").value;
+    var expire = document.getElementById("expire1").value;
     var token = document.getElementById("token1").value;
 
-
-    var clientUpdate = new Client(id, email, name, password, tel);
+    var clientUpdate = {
+        "email": email,
+        // "expire": 0,
+        "id": 0,
+        "name": name,
+        "password": password,
+        "special": special,
+        "tel": tel,
+        // "token": 0
+    }
+    // var clientUpdate = new Client(id, email, name, password, tel);
 
     console.log(clientUpdate);
 
@@ -320,6 +336,7 @@ function makeTableAccounts() {
         this.id = accounts[index].id;
         this.balance = accounts[index].balance;
         this.bank = accounts[index].bank;
+        this.userID = accounts[index].user;
 
 
         var drop = ' <td id="idAccount' + index + '">' + '<div class="dropdown">' +
@@ -331,7 +348,8 @@ function makeTableAccounts() {
             + index +
             ',' + balance +
             ',`' + bank +
-            '`,' + id + ')">Update Account</button>' +
+            '`,' + id +
+            ',' + userID+ ')">Update Account</button>' +
             '  </div> </td>';
 
 
@@ -339,23 +357,26 @@ function makeTableAccounts() {
             drop +
             '<td id="tdBALANCE' + index + '">' + balance + '</td>' +
             '<td id="tdBANK' + index + '">' + bank + '</td>' +
+            '<td id="tdUSERID' + index + '">' + userID + '</td>' +
             '<td id="tdbtnp' + index + '"><button id="btn2-' + index + '" class="btn btn-danger" onclick="deleteAccount(' + id + ')">&times;</button></td></tr>');
     }
     $("#TableAccounts:last-child").append('</tbody>')
     console.log('makeTableAccounts fim')
 };
-function updateAccount(index, balance, bank, id) {
+function updateAccount(index, balance, bank, id, userIDa) {
     var b = String(index);
     var rowID = "#tr" + b
 
     var balanceID = "#tdBALANCE" + b
     var bankID = "#tdBANK" + b
+    var userIDID = "#tdUSERID" + b
 
     var btnid = "#tdbtnp" + b + ":last-child"
     var btnid1 = "#btn2-" + b
     // $(rowID).remove();
     $(balanceID).replaceWith('<th><input size="4" placeholder="balance" name="balance" value="' + balance + '" id="balance1"></th>');
     $(bankID).replaceWith('<th><input size="4" placeholder="bank" name="bank" value="' + bank + '" id="bank1"></th>');
+    $(userIDID).replaceWith('<th><input size="4" placeholder="userID" name="userID" value="' + userIDa + '" id="userID1"></th>');
 
     $(btnid1).remove();
     $(btnid).append('<button id="btn2-' + index + '" class="btn btn-success" onclick="sendUpdateAccount(' + id + ')">Update</button>');
@@ -368,9 +389,11 @@ function sendUpdateAccount(id) {
 
     var balance = document.getElementById("balance1").value;
     var bank = document.getElementById("bank1").value;
+    var userIdx = document.getElementById("userID1").value;
+    var user =JSON.parse('{"id" : "'+userIdx+'"}');
 
     var id = id;
-    var acountUpdate = new Account(id, balance, bank);
+    var acountUpdate = new Account(id, balance, bank, user);
 
 
     console.log(acountUpdate);
@@ -386,7 +409,7 @@ function sendUpdateAccount(id) {
         success: function (response) {
             console.log(response);
             console.log('sucesso');
-            getInfoAccounts();
+            
         },
         error: function (err) {
             console.log(err);
@@ -395,7 +418,7 @@ function sendUpdateAccount(id) {
         }
 
     });
-
+getInfoAccounts();
 }
 function makeTableMovements() {
     console.log('makeTableMovements inicio')
@@ -410,7 +433,8 @@ function makeTableMovements() {
         this.debit = movements[index].debit;
         this.credit = movements[index].credit;
         this.balance = movements[index].balance;
-
+        this.accountId = movements[index].accountId;
+        
         var drop = ' <td id="idAccount' + index + '">' + '<div class="dropdown">' +
             '  <button class="btn btn-secondary dropright" type="button" id="dropdownMenuButton" data-toggle="dropdown"   >' +
             id +
@@ -418,12 +442,13 @@ function makeTableMovements() {
             '  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">' +
             '    <button  class="dropdown-item " onclick="updateMovement('
             + index +
-            ',' + date +
+            ',' +Date.parse( date )+
             ',`' + description +
             '`,' + debit +
             ',' + credit +
             ',' + balance +
-            ',' + id + ')">Update Account</button>' +
+            ',' + accountId +
+            ',' + id + ')">Update Movement</button>' +
             '  </div> </td>';
 
 
@@ -434,13 +459,14 @@ function makeTableMovements() {
             '<td id="tdDEBIT' + index + '">' + debit + '</td>' +
             '<td id="tdCREDIT' + index + '">' + credit + '</td>' +
             '<td id="tdBALANCEE' + index + '">' + balance + '</td>' +
+            '<td id="tdACCOUNTID' + index + '">' + accountId + '</td>' +
 
             '<td id="tdbtnm' + index + '"><button id="btn3-' + index + '" class="btn btn-danger" onclick="deleteMovement(' + id + ')">&times;</button></td></tr>');
     }
     $("#TableMovements:last-child").append('</tbody>')
     console.log('makeTableMovements fim')
 };
-function updateMovement(index, date, description, debit, credit, balance, id) {
+function updateMovement(index, date, description, debit, credit, balance,accountId, id) {
     var b = String(index);
     var rowID = "#tr" + b
 
@@ -449,6 +475,7 @@ function updateMovement(index, date, description, debit, credit, balance, id) {
     var debitID = "#tdDEBIT" + b
     var creditID = "#tdCREDIT" + b
     var balanceID = "#tdBALANCEE" + b
+    var accountID = "#tdACCOUNTID" + b
 
 
     var btnid = "#tdbtnm" + b + ":last-child"
@@ -458,7 +485,8 @@ function updateMovement(index, date, description, debit, credit, balance, id) {
     $(descriptionID).replaceWith('<th><input size="4" placeholder="description" name="description" value="' + description + '" id="description1"></th>');
     $(debitID).replaceWith('<th><input size="4" placeholder="debit" name="debit" value="' + debit + '" id="debit1"></th>');
     $(creditID).replaceWith('<th><input size="4" placeholder="credit" name="credit" value="' + credit + '" id="credit1"></th>');
-    $(balanceID).replaceWith('<th><input size="4" placeholder="balance" name="balance" value="' + balance + '" id="balance1"></th>');
+    $(balanceID).replaceWith('<th><input size="4" placeholder="balance" name="balance" value="' + balance + '" id="balanceee1"></th>');
+    $(accountID).replaceWith('<th><input size="4" placeholder="accountId" name="accountId" value="' + accountId + '" id="accountId1"></th>');
 
     $(btnid1).remove();
     $(btnid).append('<button id="btn3-' + index + '" class="btn btn-success" onclick="sendUpdateMovement(' + id + ')">Update</button>');
@@ -467,18 +495,30 @@ function updateMovement(index, date, description, debit, credit, balance, id) {
 
 }
 function sendUpdateMovement(id) {
-    console.log('sendUpdateAccount inicio')
+    console.log('sendUpdateMovement inicio')
 
 
-    var date = document.getElementById("date1").value;
+    var date = Date.parse(document.getElementById("date1").value);
     var description = document.getElementById("description1").value;
     var debit = document.getElementById("debit1").value;
     var credit = document.getElementById("credit1").value;
-    var balance = document.getElementById("balance1").value;
+    var balance = document.getElementById("balanceee1").value;
+    var accountId = document.getElementById("accountId1").value;
 
     var id = id;
-    var movementUpdate = new Movement(id, date, description, debit, credit, balance);
-
+    // var movementUpdate = new Movement(id, date, description, debit, credit, balance,accountId);
+    var movementUpdate ={
+        "id":id,
+        "account":{
+                "id": accountId
+            },
+            "date":date,
+            "description": description,
+            "debit": debit,
+            "credit":credit,
+            "balance":balance,
+            "type":"noType"
+        };
 
     console.log(movementUpdate);
     $.ajax({
@@ -510,8 +550,18 @@ function createClient() {
     var name = document.getElementById("name").value;
     var password = document.getElementById("password").value;
     var tel = document.getElementById("tel").value;
-    var espechial = false;
-    var clientNew = new Client(0, email, name, password, tel, espechial)
+    var special = document.getElementById("special").value;
+    // var clientNew = new Client(0, email, name, password, tel);
+    var clientNew = {
+        "email": email,
+        // "expire": 0,
+        // "id": 0,
+        "name": name,
+        "password": password,
+        "special": special,
+        "tel": tel,
+        // "token": 0
+};
     console.log(clientNew)
 
     console.log('createCliente fim')
@@ -543,8 +593,9 @@ function createAccount() {
     console.log('createAccount inicio')
     var balance = document.getElementById("balance").value;
     var bank = document.getElementById("bank").value;
+    var user =JSON.parse('{"id" : "'+document.getElementById("userID").value+'"}');
 
-    var accountNew = new Account(0, balance, bank)
+    var accountNew = new Account(0, balance, bank, user)
     console.log(accountNew)
 
     console.log('createAccount fim')
@@ -573,15 +624,28 @@ function postAccount(accountNew) {
     // setTimeout('getInfoAccounts()', 500)
 };
 function createMovement() {
-    console.log('createAccount inicio')
+    console.log('createMovement inicio')
     var date = document.getElementById("date").value;
     var description = document.getElementById("description").value;
     var debit = document.getElementById("debit").value;
     var credit = document.getElementById("credit").value;
     var balance = document.getElementById("balance1").value;
-    var movementNew = new Movement(0, date, description, debit, credit, balance)
+    // var accountId =JSON.parse('{"id" : "'+ document.getElementById("acount__id1").value+'"}');
+    var accountId = document.getElementById("acount__id1").value;
+    // var movementNew = new Movement(0, date, description, debit, credit, balance,accountId)
+    var movementNew = {
+        "account":{
+                "id": accountId
+            },
+            "date":date,
+            "description": description,
+            "debit": debit,
+            "credit":credit,
+            "balance":balance,
+            "type":"noType"
+        };
     console.log(movementNew)
-    console.log('createAccount fim')
+    console.log('createMovement fim')
     postMovement(movementNew)
 }
 function postMovement(movementNew) {

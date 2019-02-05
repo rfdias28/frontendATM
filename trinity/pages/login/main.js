@@ -30,18 +30,18 @@ function executeScriptLogin() {
             // xhrFields: {
             //     withCredentials: true
             //  },
-            crossDomain: true,
+            // crossDomain: true,
             url: `http://localhost:8080/ATM/api/login/`,
             data: JSON.stringify(data),
             credentials: 'same-origin',
 
             success: function (response) {
-                console.log(response.client.espechial);
+                console.log(response.client.special);
                 id = response.client.id;
                 console.log('sucesso');
                 $('form').fadeOut(500);
                 $('.wrapper').addClass('form-success');
-                if (response.client.espechial === false) {
+                if (response.client.special === false) {
                     window.location.href = `pages/user/index2.html?param=${JSON.stringify(response)}`;
                     // executefirstScript(response)
                 } else {
