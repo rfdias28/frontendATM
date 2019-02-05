@@ -8,6 +8,7 @@ class logIN {
     }
 }
 
+
 // $(document).ready(function () {
 //     $('.pass_show').append('<span class="ptxt">Show</span>');
 // });
@@ -21,7 +22,9 @@ class logIN {
 
 // });
 
-$("#login-button").click(function (event) {
+// $("#login-button").click(function (event) {
+function log() {
+
 
     event.preventDefault();
     var pass = document.getElementById("pass").value;
@@ -44,10 +47,11 @@ $("#login-button").click(function (event) {
             console.log(response);
             console.log('sucesso');
             $('form').fadeOut(500);
-            // executeScriptMovimentos()
-            setTimeout( "paginaMenu()",500);
-            // id=response.id
-            console.log("id " + id)
+            executeScriptMovimentos();
+         
+            getMenuPage()
+            executeScriptMenu(response);
+
         },
         error: function (err) {
             console.log(err);
@@ -57,13 +61,13 @@ $("#login-button").click(function (event) {
         },
 
     });
+}
 
 
+// });
 
-});
-
-   /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
-   function openNav() {
+/* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+function openNav() {
     document.getElementById("mySidenav").style.width = "300px";
 
     // document.getElementById("main-container").style.marginLeft = "250px";

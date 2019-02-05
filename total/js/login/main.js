@@ -40,15 +40,7 @@ function executeScriptLogin() {
             error: function (err) {
                 console.log(err);
                 console.log('ERRO');
-                // var cliente={};
-                // cliente.name='RubenManique'
-                // cliente.email='manique@ruben.com';
-                // cliente.password='';
-                // $('form').fadeOut(500);
-                // $('.wrapper').addClass('form-success');
-                // $('#main-container').html(getMenuPage());
-                // executeScriptMenu(cliente);
-                // alert("credenciais invalidas");
+                
             },
             headers: {
                 'Accept': 'application/json',
