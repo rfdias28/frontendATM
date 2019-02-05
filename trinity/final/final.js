@@ -16,13 +16,13 @@ var reload = `<script>console.log('ola');function timedRefresh(timeoutPeriod) {s
 ,timeoutPeriod);}window.onload = timedRefresh(7000);</script>`;
 // -------------
 class Client {
-    constructor(id, email, name, password, tel, espechial, expire, token) {
+    constructor(id, email, name, password, tel, special, expire, token) {
         this.id = id;
         this.email = email;
         this.name = name;
         this.password = password;
         this.tel = tel;
-        this.espechial = espechial;
+        this.special = special;
         this.expire = expire;
         this.token = token;
     }
@@ -66,7 +66,7 @@ function quickLogIn() {
         success: function (response) {
             console.log('quickLogIn');
             console.log(response);
-            logInManager = response.token + "/" + response.expire + "/" + response.espechial
+            logInManager = response.token + "/" + response.expire + "/" + response.special
             tokenExpire = response.token + "/" + response.expire
             executeScript();
 
@@ -144,12 +144,12 @@ function makeArrayClients(clientRaw) {
         this.name = clientRaw[index].name;
         this.password = clientRaw[index].password;
         this.tel = clientRaw[index].tel;
-        this.espechial = clientRaw[index].espechial;
+        this.special = clientRaw[index].special;
         this.expire = clientRaw[index].expire;
 
         this.token = clientRaw[index].token;
 
-        var clientX = new Client(id, email, name, password, tel, espechial, expire, token)
+        var clientX = new Client(id, email, name, password, tel, special, expire, token)
         clients.push(clientX);
     }
     console.log(clients);
@@ -197,7 +197,7 @@ function makeTableClients() {
         this.name = clients[index].name;
         this.password = clients[index].password;
         this.tel = clients[index].tel;
-        this.espechial = clients[index].espechial;
+        this.special = clients[index].special;
         this.expire = clients[index].expire;
 
         this.token = clients[index].token;
@@ -214,7 +214,7 @@ function makeTableClients() {
             '`,`' + name +
             '`,' + password +
             ',' + tel +
-            ',' + espechial +
+            ',' + special +
             ',' + expire +
             ',' + token +
             ')">Update Cliente</button>' +
@@ -227,7 +227,7 @@ function makeTableClients() {
             '<td id="tdNAME' + index + '">' + name + '</td>' +
             '<td id="tdPASSWORD' + index + '">' + password + '</td>' +
             '<td id="tdTEL' + index + '">' + tel + '</td>' +
-            '<td id="tdESPECHIAL' + index + '">' + espechial + '</td>' +
+            '<td id="tdSPECIAL' + index + '">' + special + '</td>' +
             '<td id="tdEXPIRE' + index + '">' + expire + '</td>' +
             '<td id="tdTOKEN' + index + '">' + token + '</td>' +
 
@@ -239,7 +239,7 @@ function makeTableClients() {
     $("#TableClients:last-child").append('</tbody>')
     console.log('makeTableClients fim')
 };
-function updateClient(index, id, email, name, password, tel, espechial, expire, token) {
+function updateClient(index, id, email, name, password, tel, special, expire, token) {
     var b = String(index);
     var rowID = "#tr" + b
 
@@ -247,7 +247,7 @@ function updateClient(index, id, email, name, password, tel, espechial, expire, 
     var nameID = "#tdNAME" + b
     var passwordID = "#tdPASSWORD" + b
     var telID = "#tdTEL" + b
-    var espechialID = "#tdESPECHIAL" + b
+    var specialID = "#tdSPECIAL" + b
     var expireID = "#tdEXPIRE" + b
     var tokenID = "#tdTOKEN" + b
 
@@ -258,7 +258,7 @@ function updateClient(index, id, email, name, password, tel, espechial, expire, 
     $(nameID).replaceWith('<th><input size="4" placeholder="name" name="name" value="' + name + '" id="name1"></th>');
     $(passwordID).replaceWith('<th><input size="4" placeholder="password" name="password" value="' + password + '" id="password1"></th>');
     $(telID).replaceWith('<th><input size="4" placeholder="tel" name="tel" value="' + tel + '" id="tel1"></th>');
-    $(espechialID).replaceWith('<th><input size="4" placeholder="espechial" name="espechial" value="' + espechial + '" id="espechial1"></th>');
+    $(specialID).replaceWith('<th><input size="4" placeholder="special" name="special" value="' + special + '" id="special1"></th>');
     $(expireID).replaceWith('<th><input size="4" placeholder="expire" name="expire" value="' + expire + '" id="expire1"></th>');
     $(tokenID).replaceWith('<th><input size="4" placeholder="token" name="token" value="' + token + '" id="token1"></th>');
 
@@ -275,8 +275,8 @@ function sendUpdateClient(id) {
     var name = document.getElementById("name1").value;
     var password = document.getElementById("password1").value;
     var tel = document.getElementById("tel1").value;
-    var espechial = document.getElementById("espechial1").value;
-    var espechial = document.getElementById("expire1").value;
+    var special = document.getElementById("special1").value;
+    var special = document.getElementById("expire1").value;
     var token = document.getElementById("token1").value;
 
 
@@ -510,8 +510,8 @@ function createClient() {
     var name = document.getElementById("name").value;
     var password = document.getElementById("password").value;
     var tel = document.getElementById("tel").value;
-    var espechial = false;
-    var clientNew = new Client(0, email, name, password, tel, espechial)
+    var special = false;
+    var clientNew = new Client(0, email, name, password, tel, special)
     console.log(clientNew)
 
     console.log('createCliente fim')
