@@ -5,6 +5,7 @@ var tokenExpire = "1580699625/1548768925824"
 const urlParams = new URLSearchParams(window.location.search);
 const myParam = JSON.parse(urlParams.get('param'));
 executeScriptClient(myParam)
+console.log("myParam")
 console.log(myParam)
 function logOUT() {
   $.ajax({
@@ -70,6 +71,7 @@ function transferencia() {
 
 }
 function executeScriptClient(response) {
+  $(".nome").html(response.client.name)
   if (response.espechial == 1) {
     logInManager = response.token + "/" + response.expire + "/" + response.espechial
   } else {
@@ -114,27 +116,27 @@ function executeScriptClient(response) {
 
 
 
-      $.ajax({
-        type: "GET",
-        crossDomain: true,
-        url: `http://localhost:8080/ATM/api/client/${id}/${tokenExpire}`,
-        credentials: 'same-origin',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        success: function (infoCient) {
-          console.log(infoCient);
-          console.log('sucesso');
-          $(".nome").html(infoCient.name)
+      // $.ajax({
+      //   type: "GET",
+      //   crossDomain: true,
+      //   url: `http://localhost:8080/ATM/api/client/${id}/${tokenExpire}`,
+      //   credentials: 'same-origin',
+      //   headers: {
+      //     'Accept': 'application/json',
+      //     'Content-Type': 'application/json'
+      //   },
+      //   success: function (infoCient) {
+      //     console.log(infoCient);
+      //     console.log('sucesso');
+      //     $(".nome").html(infoCient.name)
 
-        },
-        error: function (err) {
-          console.log(err);
-          console.log('ERRO');
-        },
+      //   },
+      //   error: function (err) {
+      //     console.log(err);
+      //     console.log('ERRO');
+      //   },
 
-      });
+      // });
 
 
 
