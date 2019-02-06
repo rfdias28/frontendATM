@@ -289,7 +289,7 @@ function sendUpdateClient(id) {
     var clientUpdate = {
         "email": email,
         // "expire": 0,
-        "id": 0,
+        "id": id,
         "name": name,
         "password": password,
         "special": special,
